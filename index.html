@@ -279,12 +279,12 @@
                 title: "抵達南國、品嚐海鮮、入住恩納",
                 highlight: "系滿魚市場、阿古豬",
                 details: [
-                    { time: "09:30", action: "抵達那霸機場", desc: "搭乘 IT288 班機抵達。辦理入境手續。", icon: "&#9992;&#65039;", map: null },
-                    { time: "11:00", action: "OTS 租車 (臨空豐崎營業所)", desc: "搭乘接駁車前往取車。務必確認兩台車及 3 張兒童安全座椅。", icon: "&#128663;", map: "https://goo.gl/maps/H1P3B2WzT1xP5M3eA" },
-                    { time: "12:30", action: "午餐：系滿魚市場", desc: "取車後開車約15分。新鮮生魚片、海鮮燒烤，大人小孩都能找到喜歡的食物。建議停留: 1.5小時", icon: "&#127843;", map: "https://goo.gl/maps/bHkM5qQx2r4kC7H8A" },
-                    { time: "14:30", action: "向北移動", desc: "行駛沖繩自動車道前往恩納村。車程約 1 小時，小孩可於車上睡午覺。", icon: "&#128739;&#65039;", map: null },
-                    { time: "16:00", action: "飯店 Check-in (恩納村)", desc: "辦理入住，稍作休息或於飯店周邊沙灘散步。", icon: "&#127976;", map: null },
-                    { time: "18:00", action: "晚餐：恩納村 阿古豬料理", desc: "【必吃】推薦『琉球の牛』或『島豚屋』，品嚐沖繩特產阿古豬涮涮鍋或蒸肉，肉質軟嫩適合小孩。需提前訂位！", icon: "&#128055;", map: "https://goo.gl/maps/example_agu_onna" }
+                    { time: "13:00", action: "抵達那霸機場", desc: "班機抵達那霸。辦理入境手續與領取行李。", icon: "&#9992;&#65039;", map: null },
+                    { time: "14:30", action: "OTS 租車 (臨空豐崎營業所)", desc: "搭乘接駁車前往取車。務必確認兩台車及 3 張兒童安全座椅。", icon: "&#128663;", map: "https://goo.gl/maps/H1P3B2WzT1xP5M3eA" },
+                    { time: "15:30", action: "輕食下午茶：系滿魚市場", desc: "取車後開車約15分。吃點新鮮生魚片、海鮮燒烤墊墊胃，大人小孩都能找到喜歡的食物。建議停留: 1小時", icon: "&#127843;", map: "https://goo.gl/maps/bHkM5qQx2r4kC7H8A" },
+                    { time: "16:30", action: "向北移動", desc: "行駛沖繩自動車道前往恩納村。車程約 1 小時，小孩可於車上休息。", icon: "&#128739;&#65039;", map: null },
+                    { time: "17:30", action: "飯店 Check-in (恩納村)", desc: "抵達恩納村辦理入住，稍作休息或於飯店周邊沙灘散步。", icon: "&#127976;", map: null },
+                    { time: "18:30", action: "晚餐：恩納村 阿古豬料理", desc: "【必吃】推薦『琉球の牛』或『島豚屋』，品嚐沖繩特產阿古豬涮涮鍋或蒸肉，肉質軟嫩適合小孩。需提前訂位！", icon: "&#128055;", map: "https://goo.gl/maps/example_agu_onna" }
                 ]
             },
             {
@@ -413,20 +413,22 @@
                 content.className = "px-6 py-4 hidden itinerary-content";
                 
                 const timelineWrap = document.createElement('div');
-                timelineWrap.className = "relative pl-8 space-y-6 py-2";
-                timelineWrap.innerHTML = '<div class="timeline-line"></div>';
+                timelineWrap.className = "relative pl-10 md:pl-12 space-y-6 py-4";
+                timelineWrap.innerHTML = '<div class="absolute left-[19px] md:left-[23px] top-0 bottom-0 w-0.5 bg-okinawa-blue z-0"></div>';
 
                 dayData.details.forEach(detail => {
                     const mapLinkHTML = detail.map ? `<a href="${detail.map}" target="_blank" class="text-xs inline-block mt-2 text-okinawa-blue bg-okinawa-sky px-2 py-1 rounded hover:bg-blue-100 transition">&#128506;&#65039; Google Map</a>` : '';
                     timelineWrap.innerHTML += `
-                        <div class="relative">
-                            <div class="timeline-dot"></div>
+                        <div class="relative z-10">
+                            <div class="absolute -left-[30px] md:-left-[34px] top-1 w-5 h-5 rounded-full bg-okinawa-coral border-4 border-white box-border"></div>
                             <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 mb-1">
-                                <span class="font-bold text-okinawa-coral min-w-[60px]">${detail.time}</span>
-                                <span class="font-bold text-gray-800 text-lg">${detail.icon} ${detail.action}</span>
+                                <span class="font-bold text-okinawa-coral w-16 shrink-0">${detail.time}</span>
+                                <span class="font-bold text-gray-800 text-lg leading-tight">${detail.icon} ${detail.action}</span>
                             </div>
-                            <p class="text-sm text-gray-600 ml-0 sm:ml-[72px]">${detail.desc}</p>
-                            <div class="ml-0 sm:ml-[72px]">${mapLinkHTML}</div>
+                            <div class="ml-0 sm:ml-[76px]">
+                                <p class="text-sm text-gray-600">${detail.desc}</p>
+                                ${mapLinkHTML}
+                            </div>
                         </div>
                     `;
                 });
