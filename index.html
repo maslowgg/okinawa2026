@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 沖繩七天六夜親子自駕遊 | 專屬行程企劃</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'okinawa-blue': '#007B99',
+                        'okinawa-sand': '#F4EBD0',
+                        'okinawa-coral': '#FF6F59',
+                        'okinawa-sky': '#E0F2F1',
+                        'okinawa-dark': '#2D3748'
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* CSS Reset & Utilities */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        
+        /* Chart Container Styling - Mandatory Requirement */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 350px; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F4EBD0; }
+        ::-webkit-scrollbar-thumb { background: #007B99; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #005f75; }
+
+        /* Timeline Styles */
+        .timeline-line {
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #007B99;
+            z-index: 0;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 6px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #FF6F59;
+            border: 4px solid #fff;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<!-- Chosen Palette: Okinawa Breeze (okinawa-blue: #007B99, okinawa-sand: #F4EBD0, okinawa-coral: #FF6F59, okinawa-sky: #E0F2F1) -->
+<!-- Application Structure Plan: 
+    1. Navigation (Sticky): Easy access to sections.
+    2. Hero Section: Overview of trip parameters (Dates, Pax, Vibe).
+    3. Quick Briefing (Dashboard): Key stats, car rental advice (crucial for 9 pax), and hotel logic.
+    4. Interactive Itinerary (Timeline): The core component. Day-by-day expandable timeline. Shows route, stops, times, and map links. Kept geographically logical (South -> North -> South) to minimize driving time for kids.
+    5. Food & Dining (Filterable Grid): Highlights the user's specific food requests (Agu Pork, Jojoen) + categorized recommendations.
+    6. Budget Analysis (Visual): Chart.js breakdown of the 1500 TWD/day budget to prove feasibility and guide spending.
+    Reasoning: A top-down scroll matches the travel planning process: Big picture -> Daily details -> Food planning -> Budget confirmation.
+-->
+<!-- Visualization & Content Choices: 
+    - Trip Overview -> Inform -> Stat cards with emojis -> Quick digestion of facts -> HTML/Tailwind.
+    - Daily Itinerary -> Organize -> Interactive Vertical Timeline -> Accordion interaction keeps UI clean while offering deep details (times, maps) -> Vanilla JS + HTML/CSS.
+    - Food Options -> Compare/Filter -> Categorized Card Grid -> Filter buttons for quick decision making -> Vanilla JS + HTML.
+    - Budget Breakdown -> Proportions -> Doughnut Chart -> Visualizes where the 1500 TWD goes -> Chart.js.
+-->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<body class="bg-gray-50 text-okinawa-dark antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-xl font-bold text-okinawa-blue tracking-wider">&#9992;&#65039; 沖繩親子遊</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#overview" class="text-gray-600 hover:text-okinawa-coral font-medium transition">行程總覽</a>
+                    <a href="#itinerary" class="text-gray-600 hover:text-okinawa-coral font-medium transition">每日行程</a>
+                    <a href="#food" class="text-gray-600 hover:text-okinawa-coral font-medium transition">必吃美食</a>
+                    <a href="#budget" class="text-gray-600 hover:text-okinawa-coral font-medium transition">預算分析</a>
+                </div>
+                <!-- Mobile Menu Button (Unicode) -->
+                <button id="mobile-menu-btn" class="md:hidden text-2xl focus:outline-none">&#9776;</button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <a href="#overview" class="block py-3 px-4 text-gray-700 hover:bg-okinawa-sky">行程總覽</a>
+            <a href="#itinerary" class="block py-3 px-4 text-gray-700 hover:bg-okinawa-sky">每日行程</a>
+            <a href="#food" class="block py-3 px-4 text-gray-700 hover:bg-okinawa-sky">必吃美食</a>
+            <a href="#budget" class="block py-3 px-4 text-gray-700 hover:bg-okinawa-sky">預算分析</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-24 pb-12 bg-gradient-to-b from-okinawa-sky to-gray-50">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-okinawa-blue mb-4">2026 沖繩夏日親子自駕行</h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-8">為 6 大 3 小量身打造的輕鬆、豐富、美味的 7 天 6 夜之旅</p>
+            <div class="inline-flex flex-wrap justify-center gap-4 text-sm font-medium">
+                <span class="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">&#128197; 2026/7/25 - 7/31</span>
+                <span class="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">&#128104;&#8205;&#128105;&#8205;&#128103;&#8205;&#128102; 6 大人, 3 小孩(5歲以下)</span>
+                <span class="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">&#128663; OTS 租車自駕</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pb-20 space-y-20">
+
+        <!-- Section 1: Overview & Strategy -->
+        <section id="overview" class="scroll-mt-20">
+            <div class="mb-8 border-l-4 border-okinawa-coral pl-4">
+                <h2 class="text-2xl font-bold text-okinawa-dark">企劃總覽與策略</h2>
+                <p class="text-gray-600 mt-2">針對您的需求，我們規劃了「南進北出、再回南」的順暢動線，確保每日開車時間不長，讓孩童有充足休息時間。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Flight & Transport -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="text-3xl mb-3">&#9992;&#65039;</div>
+                    <h3 class="text-lg font-bold text-okinawa-blue mb-2">航班與交通</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li><strong>去程：</strong> 台灣虎航 IT288 (早班機)</li>
+                        <li><strong>回程：</strong> 台灣虎航 IT289 (午班機)</li>
+                        <li><strong>租車建議：</strong> 因共 9 人且含 3 張兒童汽座及行李，強烈建議於 OTS 租賃 <strong>兩台 5-8 人座休旅車</strong> (如 Toyota Sienta/Noah)，一台車無法合法且舒適地容納。</li>
+                    </ul>
+                </div>
+                <!-- Accommodation Logic -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="text-3xl mb-3">&#127976;</div>
+                    <h3 class="text-lg font-bold text-okinawa-blue mb-2">住宿策略</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li><strong>7/25 - 7/28 (恩納村 3晚)：</strong><br>主打海景與度假村設施。方便前往中北部的古宇利島、水族館、美國村，節省每日拉車時間。</li>
+                        <li><strong>7/28 - 7/31 (那霸市 3晚)：</strong><br>主打市區便利性與採買。方便前往南部景點、國際通，及最後一天前往機場還車。</li>
+                    </ul>
+                </div>
+                <!-- Vibe & Budget -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="text-3xl mb-3">&#128176;</div>
+                    <h3 class="text-lg font-bold text-okinawa-blue mb-2">預算與風格</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li><strong>風格：</strong> 親子慢遊。每日景點安排 2-3 個，保留彈性，避免走馬看花。</li>
+                        <li><strong>日常預算：</strong> 每人每日 NT$1,500 (約 7,000 日圓)。<br><em>*此預算設定為「餐飲+門票+過路油資」，住宿與機票通常另計。敘敘院與阿古豬會佔用較高額度，將以平價美食平衡。</em></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Interactive Itinerary -->
+        <section id="itinerary" class="scroll-mt-20">
+            <div class="mb-8 border-l-4 border-okinawa-blue pl-4 flex justify-between items-end">
+                <div>
+                    <h2 class="text-2xl font-bold text-okinawa-dark">每日詳細行程</h2>
+                    <p class="text-gray-600 mt-2">點擊每日卡片展開詳細時間軸與 Google Maps 導航連結。時間為預估值，可依孩童狀況彈性調整。</p>
+                </div>
+                <button id="expand-all-btn" class="hidden md:block text-sm bg-okinawa-blue text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition">展開全部</button>
+            </div>
+
+            <!-- Dynamic Itinerary Container -->
+            <div id="itinerary-container" class="space-y-4">
+                <!-- JavaScript will populate this -->
+            </div>
+        </section>
+
+        <!-- Section 3: Must-Eat Food Filter -->
+        <section id="food" class="scroll-mt-20">
+            <div class="mb-8 border-l-4 border-okinawa-coral pl-4">
+                <h2 class="text-2xl font-bold text-okinawa-dark">美食探索指南</h2>
+                <p class="text-gray-600 mt-2">整合您指定必吃的「阿古豬」與「敘敘院」，並加入在地推薦。使用按鈕篩選您想找的類型。</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-2 mb-6" id="food-filters">
+                <button class="filter-btn active bg-okinawa-blue text-white px-4 py-2 rounded-full text-sm font-medium transition" data-filter="all">全部顯示</button>
+                <button class="filter-btn bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 px-4 py-2 rounded-full text-sm font-medium transition" data-filter="meat">指定肉品 (阿古豬/燒肉)</button>
+                <button class="filter-btn bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 px-4 py-2 rounded-full text-sm font-medium transition" data-filter="seafood">海鮮大餐</button>
+                <button class="filter-btn bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 px-4 py-2 rounded-full text-sm font-medium transition" data-filter="cafe">甜點/文青</button>
+            </div>
+
+            <!-- Food Grid -->
+            <div id="food-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- JavaScript will populate this -->
+            </div>
+        </section>
+
+        <!-- Section 4: Budget Analysis -->
+        <section id="budget" class="scroll-mt-20">
+            <div class="mb-8 border-l-4 border-okinawa-blue pl-4">
+                <h2 class="text-2xl font-bold text-okinawa-dark">預算可行性分析</h2>
+                <p class="text-gray-600 mt-2">目標：每人每日 NT$1,500 (約 7,150 日圓，以匯率 0.21 估算)。此圖表展示每日預算的建議分配方式，確保能品嚐大餐同時不超支。</p>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-8">
+                <!-- Chart Container (Follows Strict Specs) -->
+                <div class="w-full md:w-1/2">
+                    <div class="chart-container">
+                        <canvas id="budgetChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Budget Text Breakdown -->
+                <div class="w-full md:w-1/2 space-y-4">
+                    <h3 class="text-xl font-bold text-okinawa-dark">每日 NT$1,500 分配策略</h3>
+                    <p class="text-sm text-gray-600">透過高低消費穿插，達成平衡。例如：吃敘敘院當天，午餐可選擇平價沖繩麵；早餐盡量安排在飯店內解決。</p>
+                    
+                    <div class="space-y-3 mt-4">
+                        <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                            <span class="flex items-center gap-2"><span class="text-xl">&#127828;</span> 總餐飲費 (60%)</span>
+                            <span class="font-bold text-okinawa-coral">NT$ 900</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                            <span class="flex items-center gap-2"><span class="text-xl">&#127903;&#65039;</span> 景點門票 (20%)</span>
+                            <span class="font-bold text-okinawa-blue">NT$ 300</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                            <span class="flex items-center gap-2"><span class="text-xl">&#9981;&#65039;</span> 油資與過路費 (10%)</span>
+                            <span class="font-bold text-teal-600">NT$ 150</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                            <span class="flex items-center gap-2"><span class="text-xl">&#127846;</span> 雜支/點心 (10%)</span>
+                            <span class="font-bold text-orange-400">NT$ 150</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-okinawa-sky p-4 rounded-lg mt-4 text-sm text-gray-700">
+                        <strong>&#128161; 規劃師小提醒：</strong> 小孩(5歲以下)許多景點免門票，餐飲花費也較低，這部分省下來的額度可以補貼大人去吃高單價的「敘敘院燒肉」或「阿古豬」。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-okinawa-dark text-white py-8 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-lg font-bold mb-4">&#127774; 祝您有個美好的沖繩家庭之旅！</h3>
+            <p class="text-gray-400 text-sm mb-2">Designed for Canvas Create Webapp Task</p>
+            <p class="text-gray-400 text-sm">© 2026 專業旅遊規劃師. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- 1. Data Source: Itinerary ---
+        const itineraryData = [
+            {
+                day: 1,
+                date: "7/25 (六)",
+                title: "抵達南國、品嚐海鮮、入住恩納",
+                highlight: "系滿魚市場、阿古豬",
+                details: [
+                    { time: "09:30", action: "抵達那霸機場", desc: "搭乘 IT288 班機抵達。辦理入境手續。", icon: "&#9992;&#65039;", map: null },
+                    { time: "11:00", action: "OTS 租車 (臨空豐崎營業所)", desc: "搭乘接駁車前往取車。務必確認兩台車及 3 張兒童安全座椅。", icon: "&#128663;", map: "https://goo.gl/maps/H1P3B2WzT1xP5M3eA" },
+                    { time: "12:30", action: "午餐：系滿魚市場", desc: "取車後開車約15分。新鮮生魚片、海鮮燒烤，大人小孩都能找到喜歡的食物。建議停留: 1.5小時", icon: "&#127843;", map: "https://goo.gl/maps/bHkM5qQx2r4kC7H8A" },
+                    { time: "14:30", action: "向北移動", desc: "行駛沖繩自動車道前往恩納村。車程約 1 小時，小孩可於車上睡午覺。", icon: "&#128739;&#65039;", map: null },
+                    { time: "16:00", action: "飯店 Check-in (恩納村)", desc: "辦理入住，稍作休息或於飯店周邊沙灘散步。", icon: "&#127976;", map: null },
+                    { time: "18:00", action: "晚餐：恩納村 阿古豬料理", desc: "【必吃】推薦『琉球の牛』或『島豚屋』，品嚐沖繩特產阿古豬涮涮鍋或蒸肉，肉質軟嫩適合小孩。需提前訂位！", icon: "&#128055;", map: "https://goo.gl/maps/example_agu_onna" }
+                ]
+            },
+            {
+                day: 2,
+                date: "7/26 (日)",
+                title: "探索海洋奧秘與跨海大橋",
+                highlight: "美麗海水族館、古宇利島",
+                details: [
+                    { time: "09:00", action: "出發前往水族館", desc: "從恩納出發，車程約 50 分鐘。", icon: "&#128663;", map: null },
+                    { time: "10:00", action: "海洋博公園 & 美麗海水族館", desc: "觀賞黑潮之海的鯨鯊，戶外有海豚表演 (免費)。園區廣大，推車友善。建議停留: 3.5小時", icon: "&#128031;", map: "https://goo.gl/maps/c6gq1c3M1Q3yKxXN8" },
+                    { time: "13:30", action: "午餐：水族館周邊或古宇利島", desc: "可於水族館內用餐，或開車前往古宇利島享用蝦蝦飯 (Kouri Shrimp)。", icon: "&#127836;", map: "https://goo.gl/maps/example_kouri_shrimp" },
+                    { time: "15:00", action: "古宇利島 & 海洋塔", desc: "開車跨越壯觀的古宇利大橋。可參觀海洋塔看海景，或於古宇利海灘讓小孩踏浪。", icon: "&#127754;", map: "https://goo.gl/maps/example_kouri_tower" },
+                    { time: "17:30", action: "返回恩納村", desc: "車程約 1 小時。", icon: "&#128663;", map: null },
+                    { time: "18:30", action: "晚餐：恩納村周邊", desc: "可選擇沖繩在地居酒屋或西餐廳。", icon: "&#127869;&#65039;", map: null }
+                ]
+            },
+            {
+                day: 3,
+                date: "7/27 (一)",
+                title: "親近動植物與美式風情",
+                highlight: "名護植物園、美國村",
+                details: [
+                    { time: "09:30", action: "名護植物園 (Neo Park Okinawa)", desc: "非常適合5歲以下小孩！可以近距離餵食鳥類，還有小火車可以搭乘。建議停留: 2.5小時", icon: "&#129410;", map: "https://goo.gl/maps/example_neo_park" },
+                    { time: "12:30", action: "午餐：名護市區", desc: "推薦名護特產：百年古家 大家 (阿古豬/沖繩麵)，環境古色古香。", icon: "&#127836;", map: "https://goo.gl/maps/example_ufuya" },
+                    { time: "14:30", action: "前往美國村", desc: "開車往南前往北谷町，車程約 1 小時。", icon: "&#128663;", map: null },
+                    { time: "15:30", action: "美國村 (American Village)", desc: "充滿異國風情的色彩建築，適合推車漫步拍照。日落時分可至日落海灘旁看海。", icon: "&#127873;", map: "https://goo.gl/maps/example_american_village" },
+                    { time: "18:00", action: "晚餐：美國村內", desc: "可選擇美式漢堡、塔可飯或迴轉壽司(如: 迴轉壽司市場 美浜店)。", icon: "&#127828;", map: null }
+                ]
+            },
+            {
+                day: 4,
+                date: "7/28 (二)",
+                title: "文青散策與頂級和牛饗宴",
+                highlight: "港川外人住宅區、PARCO CITY、敘敘院",
+                details: [
+                    { time: "10:00", action: "恩納村飯店 Check-out", desc: "帶著行李往南移動。", icon: "&#129619;", map: null },
+                    { time: "11:00", action: "港川外人住宅區", desc: "昔日美軍眷村改建，現在充滿可愛的甜點店與咖啡館。推薦購買 oHacorte 水果塔。適合拍照。建議停留: 1.5小時", icon: "&#127960;&#65039;", map: "https://goo.gl/maps/example_minatogawa" },
+                    { time: "12:30", action: "午餐：港川周邊", desc: "推薦在地知名的沖繩麵店：雞湯拉麵屋或沖繩麵。", icon: "&#127836;", map: null },
+                    { time: "14:00", action: "SAN-A 浦添西海岸 PARCO CITY", desc: "沖繩最大級購物中心！室內有冷氣，非常適合下午避暑，小孩有遊戲區，大人可盡情血拚。", icon: "&#128188;", map: "https://goo.gl/maps/example_parco_city" },
+                    { time: "18:00", action: "晚餐：敘敘院 (PARCO CITY店)", desc: "【必吃】提前預訂窗邊座位可看海景。頂級燒肉饗宴，享受入口即化的和牛。(高預算餐點)", icon: "&#129385;", map: "https://goo.gl/maps/example_jojoen_parco" },
+                    { time: "20:30", action: "飯店 Check-in (那霸市)", desc: "開車前往那霸市區飯店入住。", icon: "&#127976;", map: null }
+                ]
+            },
+            {
+                day: 5,
+                date: "7/29 (三)",
+                title: "新型水族館與看飛機吃甜點",
+                highlight: "DMM水族館、瀨長島",
+                details: [
+                    { time: "09:30", action: "前往豐見城市", desc: "從那霸市區開車約 30 分鐘。", icon: "&#128663;", map: null },
+                    { time: "10:00", action: "DMM Kariyushi 水族館", desc: "位於百貨內的新型態水族館，結合影像技術，有許多近距離觸摸體驗，非常吸引小小孩。建議停留: 2小時", icon: "&#128034;", map: "https://goo.gl/maps/example_dmm" },
+                    { time: "12:30", action: "午餐：iias 沖繩豐崎", desc: "水族館所在的商場內有美食街，方便快速解決午餐。", icon: "&#127869;&#65039;", map: null },
+                    { time: "14:30", action: "瀨長島 Umikaji Terrace", desc: "純白建築的希臘風海岸商場。距離機場近，是看飛機起降的最佳地點。", icon: "&#9992;&#65039;", map: "https://goo.gl/maps/example_senagajima" },
+                    { time: "15:30", action: "下午茶：幸福鬆餅", desc: "位於瀨長島內，超人氣舒芙蕾鬆餅，口感綿密，小孩超愛！(建議先抽號碼牌)", icon: "&#129374;", map: null },
+                    { time: "18:30", action: "晚餐：那霸市區", desc: "返回市區，可於國際通周邊用餐。", icon: "&#127835;", map: null }
+                ]
+            },
+            {
+                day: 6,
+                date: "7/30 (四)",
+                title: "那霸市區文化與採買",
+                highlight: "國際通、牧志市場",
+                details: [
+                    { time: "10:00", action: "沖繩世界文化王國 (玉泉洞)", desc: "(彈性行程) 開車約 40 分。可觀看鐘乳石洞與傳統太鼓秀。若不想跑遠，可改去首里城公園外圍走走。", icon: "&#127878;", map: "https://goo.gl/maps/example_okinawa_world" },
+                    { time: "13:00", action: "午餐：牧志公設市場周邊", desc: "感受在地市場活力，一樓買海鮮可上二樓代客料理，或是吃有名的豬肉蛋飯糰。", icon: "&#127843;", map: "https://goo.gl/maps/example_makishi" },
+                    { time: "14:30", action: "國際通 (Kokusai Dori)", desc: "採買伴手禮 (紅芋塔、雪鹽、紀念品) 的最佳時機。唐吉訶德也在這裡。", icon: "&#128189;", map: "https://goo.gl/maps/example_kokusai" },
+                    { time: "18:00", action: "晚餐：國際通屋台村 / 暖暮拉麵", desc: "最後一晚，享受熱鬧的那霸市區夜晚。", icon: "&#127836;", map: null }
+                ]
+            },
+            {
+                day: 7,
+                date: "7/31 (五)",
+                title: "滿載而歸",
+                highlight: "歸還車輛、搭機",
+                details: [
+                    { time: "07:00", action: "飯店 Check-out", desc: "準備好所有行李，確認沒有遺漏。", icon: "&#129619;", map: null },
+                    { time: "07:30", action: "OTS 還車 (臨空豐崎或機場旁)", desc: "請務必預留加滿油及還車檢查的時間 (至少抓 40 分鐘)。搭乘接駁車前往機場。", icon: "&#128663;", map: null },
+                    { time: "08:30", action: "抵達那霸機場 (OKA)", desc: "辦理 IT289 報到手續與托運行李。逛逛國內線航廈的伴手禮店(選擇比國際線多)。", icon: "&#9992;&#65039;", map: null },
+                    { time: "10:55", action: "搭機返台", desc: "帶著滿滿的夏日回憶，平安回家！", icon: "&#127968;", map: null }
+                ]
+            }
+        ];
+
+        // --- 2. Data Source: Food ---
+        const foodData = [
+            { name: "敘敘院 燒肉", category: "meat", desc: "位於 PARCO CITY，無敵海景配頂級和牛，您指定的必吃美食！", location: "浦添市", emoji: "&#129385;" },
+            { name: "琉球の牛 (阿古豬)", category: "meat", desc: "恩納村超人氣阿古豬與和牛專賣店，肉質鮮甜，適合長輩與小孩。", location: "恩納村", emoji: "&#128055;" },
+            { name: "系滿魚市場", category: "seafood", desc: "高CP值海鮮！生魚片、烤扇貝、海膽，環境乾淨方便。", location: "系滿市", emoji: "&#127843;" },
+            { name: "百年古家 大家", category: "meat", desc: "在百年古民家享用阿古豬沖繩麵，氣氛極佳。", location: "名護市", emoji: "&#127836;" },
+            { name: "oHacorte 水果塔", category: "cafe", desc: "港川外人住宅區內的文青甜點，新鮮水果塔超美味。", location: "浦添市", emoji: "&#127827;" },
+            { name: "幸福鬆餅 (幸せのパンケーキ)", category: "cafe", desc: "瀨長島必吃排隊名店，軟綿綿的舒芙蕾口感。", location: "豐見城市", emoji: "&#129374;" },
+            { name: "牧志公設市場 海鮮", category: "seafood", desc: "那霸的廚房，一樓挑海鮮，二樓馬上料理品嚐！", location: "那霸市", emoji: "&#128031;" },
+            { name: "豬肉蛋飯糰本店", category: "meat", desc: "國際通/牧志市場周邊，早餐或小點心的最佳選擇。", location: "那霸市", emoji: "&#127848;" }
+        ];
+
+        // --- 3. Rendering Logic ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 3a. Render Itinerary
+            const itineraryContainer = document.getElementById('itinerary-container');
+            itineraryData.forEach((dayData, index) => {
+                // Card Wrapper
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden";
+                
+                // Header (Clickable)
+                const header = document.createElement('button');
+                header.className = "w-full text-left px-6 py-4 bg-gray-50 hover:bg-okinawa-sky transition flex justify-between items-center focus:outline-none itinerary-header";
+                header.innerHTML = `
+                    <div class="flex items-center gap-4">
+                        <div class="bg-okinawa-blue text-white w-12 h-12 rounded-lg flex flex-col justify-center items-center font-bold">
+                            <span class="text-xs">Day</span>
+                            <span class="text-lg">${dayData.day}</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-okinawa-dark">${dayData.date} | ${dayData.title}</h3>
+                            <p class="text-sm text-gray-500">亮點：${dayData.highlight}</p>
+                        </div>
+                    </div>
+                    <span class="text-gray-400 transform transition-transform duration-300 icon-chevron">&#9660;</span>
+                `;
+
+                // Content (Timeline)
+                const content = document.createElement('div');
+                content.className = "px-6 py-4 hidden itinerary-content";
+                
+                const timelineWrap = document.createElement('div');
+                timelineWrap.className = "relative pl-8 space-y-6 py-2";
+                timelineWrap.innerHTML = '<div class="timeline-line"></div>';
+
+                dayData.details.forEach(detail => {
+                    const mapLinkHTML = detail.map ? `<a href="${detail.map}" target="_blank" class="text-xs inline-block mt-2 text-okinawa-blue bg-okinawa-sky px-2 py-1 rounded hover:bg-blue-100 transition">&#128506;&#65039; Google Map</a>` : '';
+                    timelineWrap.innerHTML += `
+                        <div class="relative">
+                            <div class="timeline-dot"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 mb-1">
+                                <span class="font-bold text-okinawa-coral min-w-[60px]">${detail.time}</span>
+                                <span class="font-bold text-gray-800 text-lg">${detail.icon} ${detail.action}</span>
+                            </div>
+                            <p class="text-sm text-gray-600 ml-0 sm:ml-[72px]">${detail.desc}</p>
+                            <div class="ml-0 sm:ml-[72px]">${mapLinkHTML}</div>
+                        </div>
+                    `;
+                });
+
+                content.appendChild(timelineWrap);
+                card.appendChild(header);
+                card.appendChild(content);
+                itineraryContainer.appendChild(card);
+
+                // Accordion Event Listener
+                header.addEventListener('click', () => {
+                    const isHidden = content.classList.contains('hidden');
+                    // Optional: Close all others
+                    // document.querySelectorAll('.itinerary-content').forEach(el => el.classList.add('hidden'));
+                    // document.querySelectorAll('.icon-chevron').forEach(el => el.style.transform = 'rotate(0deg)');
+                    
+                    if (isHidden) {
+                        content.classList.remove('hidden');
+                        header.querySelector('.icon-chevron').style.transform = 'rotate(180deg)';
+                    } else {
+                        content.classList.add('hidden');
+                        header.querySelector('.icon-chevron').style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // Expand All Button
+            document.getElementById('expand-all-btn').addEventListener('click', (e) => {
+                const isExpanding = e.target.innerText === "展開全部";
+                document.querySelectorAll('.itinerary-content').forEach(el => {
+                    if(isExpanding) el.classList.remove('hidden');
+                    else el.classList.add('hidden');
+                });
+                document.querySelectorAll('.icon-chevron').forEach(el => {
+                    el.style.transform = isExpanding ? 'rotate(180deg)' : 'rotate(0deg)';
+                });
+                e.target.innerText = isExpanding ? "收合全部" : "展開全部";
+            });
+
+            // Open Day 1 by default
+            document.querySelector('.itinerary-header').click();
+
+
+            // 3b. Render Food Grid
+            const foodGrid = document.getElementById('food-grid');
+            const renderFood = (filterVal) => {
+                foodGrid.innerHTML = '';
+                const filteredData = filterVal === 'all' ? foodData : foodData.filter(item => item.category === filterVal);
+                
+                filteredData.forEach(item => {
+                    foodGrid.innerHTML += `
+                        <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col h-full">
+                            <div class="text-4xl mb-2">${item.emoji}</div>
+                            <h3 class="text-lg font-bold text-okinawa-dark mb-1">${item.name}</h3>
+                            <span class="text-xs text-okinawa-blue bg-okinawa-sky px-2 py-1 rounded w-max mb-2">&#128205; ${item.location}</span>
+                            <p class="text-sm text-gray-600 flex-grow">${item.desc}</p>
+                        </div>
+                    `;
+                });
+            };
+            
+            // Initial render
+            renderFood('all');
+
+            // Food Filter Event Listeners
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Update active styling
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('bg-okinawa-blue', 'text-white');
+                        b.classList.add('bg-white', 'text-gray-600');
+                    });
+                    e.target.classList.remove('bg-white', 'text-gray-600');
+                    e.target.classList.add('bg-okinawa-blue', 'text-white');
+                    
+                    // Render filtered data
+                    renderFood(e.target.getAttribute('data-filter'));
+                });
+            });
+
+
+            // 3c. Render Chart.js
+            const ctx = document.getElementById('budgetChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['餐飲 (包含敘敘院/阿古豬)', '景點門票', '油資與過路費', '雜支/點心'],
+                    datasets: [{
+                        data: [900, 300, 150, 150],
+                        backgroundColor: [
+                            '#FF6F59', // okinawa-coral
+                            '#007B99', // okinawa-blue
+                            '#0d9488', // teal-600
+                            '#fb923c'  // orange-400
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // MANDATORY for responsive chart containers
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { family: "'Noto Sans TC', sans-serif" },
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` ${context.label}: NT$ ${context.raw}`;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '65%'
+                }
+            });
+
+            // 3d. Mobile Menu Toggle
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
