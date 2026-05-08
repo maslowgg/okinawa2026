@@ -33,7 +33,7 @@
         
         body { font-family: 'Noto Sans TC', sans-serif; }
         
-        /* Chart Container Styling - Mandatory Requirement */
+        /* Chart Container Styling */
         .chart-container {
             position: relative;
             width: 100%;
@@ -52,48 +52,8 @@
         ::-webkit-scrollbar-track { background: #F4EBD0; }
         ::-webkit-scrollbar-thumb { background: #007B99; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #005f75; }
-
-        /* Timeline Styles */
-        .timeline-line {
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #007B99;
-            z-index: 0;
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            left: 6px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #FF6F59;
-            border: 4px solid #fff;
-            z-index: 10;
-        }
     </style>
 </head>
-
-<!-- Chosen Palette: Okinawa Breeze (okinawa-blue: #007B99, okinawa-sand: #F4EBD0, okinawa-coral: #FF6F59, okinawa-sky: #E0F2F1) -->
-<!-- Application Structure Plan: 
-    1. Navigation (Sticky): Easy access to sections.
-    2. Hero Section: Overview of trip parameters (Dates, Pax, Vibe).
-    3. Quick Briefing (Dashboard): Key stats, car rental advice (crucial for 9 pax), and hotel logic.
-    4. Interactive Itinerary (Timeline): The core component. Day-by-day expandable timeline. Shows route, stops, times, and map links. Kept geographically logical (South -> North -> South) to minimize driving time for kids.
-    5. Food & Dining (Filterable Grid): Highlights the user's specific food requests (Agu Pork, Jojoen) + categorized recommendations.
-    6. Budget Analysis (Visual): Chart.js breakdown of the 1500 TWD/day budget to prove feasibility and guide spending.
-    Reasoning: A top-down scroll matches the travel planning process: Big picture -> Daily details -> Food planning -> Budget confirmation.
--->
-<!-- Visualization & Content Choices: 
-    - Trip Overview -> Inform -> Stat cards with emojis -> Quick digestion of facts -> HTML/Tailwind.
-    - Daily Itinerary -> Organize -> Interactive Vertical Timeline -> Accordion interaction keeps UI clean while offering deep details (times, maps) -> Vanilla JS + HTML/CSS.
-    - Food Options -> Compare/Filter -> Categorized Card Grid -> Filter buttons for quick decision making -> Vanilla JS + HTML.
-    - Budget Breakdown -> Proportions -> Doughnut Chart -> Visualizes where the 1500 TWD goes -> Chart.js.
--->
-<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
 <body class="bg-gray-50 text-okinawa-dark antialiased">
 
@@ -108,7 +68,7 @@
                     <a href="#food" class="text-gray-600 hover:text-okinawa-coral font-medium transition">必吃美食</a>
                     <a href="#budget" class="text-gray-600 hover:text-okinawa-coral font-medium transition">預算分析</a>
                 </div>
-                <!-- Mobile Menu Button (Unicode) -->
+                <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" class="md:hidden text-2xl focus:outline-none">&#9776;</button>
             </div>
         </div>
@@ -140,7 +100,7 @@
         <section id="overview" class="scroll-mt-20">
             <div class="mb-8 border-l-4 border-okinawa-coral pl-4">
                 <h2 class="text-2xl font-bold text-okinawa-dark">企劃總覽與策略</h2>
-                <p class="text-gray-600 mt-2">針對您的需求，我們規劃了「南進北出、再回南」的順暢動線，確保每日開車時間不長，讓孩童有充足休息時間。</p>
+                <p class="text-gray-600 mt-2">針對您的需求，我們規劃了「南進北出、再回南」的順暢動線，確保每日開車時間適中，讓孩童有充足休息時間。</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -149,9 +109,9 @@
                     <div class="text-3xl mb-3">&#9992;&#65039;</div>
                     <h3 class="text-lg font-bold text-okinawa-blue mb-2">航班與交通</h3>
                     <ul class="text-gray-600 space-y-2 text-sm">
-                        <li><strong>去程：</strong> 台灣虎航 IT288 (早班機)</li>
-                        <li><strong>回程：</strong> 台灣虎航 IT289 (午班機)</li>
-                        <li><strong>租車建議：</strong> 因共 9 人且含 3 張兒童汽座及行李，強烈建議於 OTS 租賃 <strong>兩台 5-8 人座休旅車</strong> (如 Toyota Sienta/Noah)，一台車無法合法且舒適地容納。</li>
+                        <li><strong>去程：</strong> 台灣虎航 IT288 (13:00抵達)</li>
+                        <li><strong>回程：</strong> 台灣虎航 IT289 (10:55起飛)</li>
+                        <li><strong>租車建議：</strong> 共 9 人含 3 張兒童汽座及行李，強烈建議於 OTS 租賃 <strong>兩台休旅車</strong>，並善用民宿提供的免費雙車位。</li>
                     </ul>
                 </div>
                 <!-- Accommodation Logic -->
@@ -159,8 +119,8 @@
                     <div class="text-3xl mb-3">&#127976;</div>
                     <h3 class="text-lg font-bold text-okinawa-blue mb-2">住宿策略</h3>
                     <ul class="text-gray-600 space-y-2 text-sm">
-                        <li><strong>7/25 - 7/28 (恩納村 3晚)：</strong><br>主打海景與度假村設施。方便前往中北部的古宇利島、水族館、美國村，節省每日拉車時間。</li>
-                        <li><strong>7/28 - 7/31 (那霸市 3晚)：</strong><br>主打市區便利性與採買。方便前往南部景點、國際通，及最後一天前往機場還車。</li>
+                        <li><strong>7/25 - 7/28 (名護市喜瀨 3晚)：</strong><br>入住 <strong>The Ritz Okinawa Kise</strong>。3LDK 大空間附雙衛浴，極度適合大家庭，且附帶兩個免費車位，前往古宇利島與水族館非常近。</li>
+                        <li><strong>7/28 - 7/31 (那霸市 3晚)：</strong><br>入住 <strong>THE NEST NAHA</strong>。市區便利性極佳，採買方便，最後一天前往機場還車也相當快速。</li>
                     </ul>
                 </div>
                 <!-- Vibe & Budget -->
@@ -169,7 +129,7 @@
                     <h3 class="text-lg font-bold text-okinawa-blue mb-2">預算與風格</h3>
                     <ul class="text-gray-600 space-y-2 text-sm">
                         <li><strong>風格：</strong> 親子慢遊。每日景點安排 2-3 個，保留彈性，避免走馬看花。</li>
-                        <li><strong>日常預算：</strong> 每人每日 NT$1,500 (約 7,000 日圓)。<br><em>*此預算設定為「餐飲+門票+過路油資」，住宿與機票通常另計。敘敘院與阿古豬會佔用較高額度，將以平價美食平衡。</em></li>
+                        <li><strong>日常預算：</strong> 每人每日 NT$1,500。<br><em>*包含餐飲+門票+過路油資。敘敘院與阿古豬會佔用較高額度，將以平價美食(如沖繩麵)平衡。</em></li>
                     </ul>
                 </div>
             </div>
@@ -216,7 +176,7 @@
         <section id="budget" class="scroll-mt-20">
             <div class="mb-8 border-l-4 border-okinawa-blue pl-4">
                 <h2 class="text-2xl font-bold text-okinawa-dark">預算可行性分析</h2>
-                <p class="text-gray-600 mt-2">目標：每人每日 NT$1,500 (約 7,150 日圓，以匯率 0.21 估算)。此圖表展示每日預算的建議分配方式，確保能品嚐大餐同時不超支。</p>
+                <p class="text-gray-600 mt-2">目標：每人每日 NT$1,500 (約 7,150 日圓，以匯率 0.21 估算)。此圖表展示每日預算的建議分配方式。</p>
             </div>
 
             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-8">
@@ -230,7 +190,7 @@
                 <!-- Budget Text Breakdown -->
                 <div class="w-full md:w-1/2 space-y-4">
                     <h3 class="text-xl font-bold text-okinawa-dark">每日 NT$1,500 分配策略</h3>
-                    <p class="text-sm text-gray-600">透過高低消費穿插，達成平衡。例如：吃敘敘院當天，午餐可選擇平價沖繩麵；早餐盡量安排在飯店內解決。</p>
+                    <p class="text-sm text-gray-600">透過高低消費穿插達成平衡。例如吃敘敘院當天，午餐可選擇平價沖繩麵；善用民宿廚房準備簡單早餐。</p>
                     
                     <div class="space-y-3 mt-4">
                         <div class="flex justify-between items-center pb-2 border-b border-gray-100">
@@ -252,7 +212,7 @@
                     </div>
                     
                     <div class="bg-okinawa-sky p-4 rounded-lg mt-4 text-sm text-gray-700">
-                        <strong>&#128161; 規劃師小提醒：</strong> 小孩(5歲以下)許多景點免門票，餐飲花費也較低，這部分省下來的額度可以補貼大人去吃高單價的「敘敘院燒肉」或「阿古豬」。
+                        <strong>&#128161; 規劃師小提醒：</strong> 5歲以下許多景點免門票，這部分省下來的額度可以大力補貼大人去吃高單價的「敘敘院燒肉」！
                     </div>
                 </div>
             </div>
@@ -276,15 +236,15 @@
             {
                 day: 1,
                 date: "7/25 (六)",
-                title: "抵達南國、品嚐海鮮、入住恩納",
-                highlight: "系滿魚市場、阿古豬",
+                title: "抵達南國、輕食海鮮、入住名護民宿",
+                highlight: "系滿魚市場、The Ritz Okinawa Kise",
                 details: [
-                    { time: "13:00", action: "抵達那霸機場", desc: "班機抵達那霸。辦理入境手續與領取行李。", icon: "&#9992;&#65039;", map: null },
-                    { time: "14:30", action: "OTS 租車 (臨空豐崎營業所)", desc: "搭乘接駁車前往取車。務必確認兩台車及 3 張兒童安全座椅。", icon: "&#128663;", map: "https://goo.gl/maps/H1P3B2WzT1xP5M3eA" },
+                    { time: "13:00", action: "抵達那霸機場", desc: "搭乘 IT288 班機抵達。辦理入境手續與領取行李。", icon: "&#9992;&#65039;", map: null },
+                    { time: "14:30", action: "OTS 租車 (臨空豐崎)", desc: "搭乘接駁車前往取車。確認兩台車及 3 張兒童安全座椅。", icon: "&#128663;", map: "https://goo.gl/maps/H1P3B2WzT1xP5M3eA" },
                     { time: "15:30", action: "輕食下午茶：系滿魚市場", desc: "取車後開車約15分。吃點新鮮生魚片、海鮮燒烤墊墊胃，大人小孩都能找到喜歡的食物。建議停留: 1小時", icon: "&#127843;", map: "https://goo.gl/maps/bHkM5qQx2r4kC7H8A" },
-                    { time: "16:30", action: "向北移動", desc: "行駛沖繩自動車道前往恩納村。車程約 1 小時，小孩可於車上休息。", icon: "&#128739;&#65039;", map: null },
-                    { time: "17:30", action: "飯店 Check-in (恩納村)", desc: "抵達恩納村辦理入住，稍作休息或於飯店周邊沙灘散步。", icon: "&#127976;", map: null },
-                    { time: "18:30", action: "晚餐：恩納村 阿古豬料理", desc: "【必吃】推薦『琉球の牛』或『島豚屋』，品嚐沖繩特產阿古豬涮涮鍋或蒸肉，肉質軟嫩適合小孩。需提前訂位！", icon: "&#128055;", map: "https://goo.gl/maps/example_agu_onna" }
+                    { time: "16:30", action: "向北移動", desc: "行駛沖繩自動車道前往名護市 (喜瀨)。車程約 1 小時 15 分，小孩可於車上休息。", icon: "&#128739;&#65039;", map: null },
+                    { time: "17:45", action: "民宿 Check-in (The Ritz Okinawa Kise)", desc: "抵達名護市喜瀨的民宿辦理入住，安頓行李。3LDK 大空間與雙衛浴讓大家能舒適休息。", icon: "&#127976;", map: null },
+                    { time: "18:45", action: "晚餐：名護市 阿古豬料理", desc: "【必吃】推薦『百年古家 大家』或周邊的阿古豬涮涮鍋，肉質軟嫩適合小孩。名護市區選擇多元。", icon: "&#128055;", map: "https://goo.gl/maps/example_ufuya" }
                 ]
             },
             {
@@ -293,12 +253,12 @@
                 title: "探索海洋奧秘與跨海大橋",
                 highlight: "美麗海水族館、古宇利島",
                 details: [
-                    { time: "09:00", action: "出發前往水族館", desc: "從恩納出發，車程約 50 分鐘。", icon: "&#128663;", map: null },
-                    { time: "10:00", action: "海洋博公園 & 美麗海水族館", desc: "觀賞黑潮之海的鯨鯊，戶外有海豚表演 (免費)。園區廣大，推車友善。建議停留: 3.5小時", icon: "&#128031;", map: "https://goo.gl/maps/c6gq1c3M1Q3yKxXN8" },
+                    { time: "09:00", action: "出發前往水族館", desc: "從名護民宿出發，車程約 30-40 分鐘。比從恩納出發更近！", icon: "&#128663;", map: null },
+                    { time: "09:40", action: "海洋博公園 & 美麗海水族館", desc: "觀賞黑潮之海的鯨鯊，戶外有海豚表演 (免費)。園區廣大，推車友善。建議停留: 3.5小時", icon: "&#128031;", map: "https://goo.gl/maps/c6gq1c3M1Q3yKxXN8" },
                     { time: "13:30", action: "午餐：水族館周邊或古宇利島", desc: "可於水族館內用餐，或開車前往古宇利島享用蝦蝦飯 (Kouri Shrimp)。", icon: "&#127836;", map: "https://goo.gl/maps/example_kouri_shrimp" },
                     { time: "15:00", action: "古宇利島 & 海洋塔", desc: "開車跨越壯觀的古宇利大橋。可參觀海洋塔看海景，或於古宇利海灘讓小孩踏浪。", icon: "&#127754;", map: "https://goo.gl/maps/example_kouri_tower" },
-                    { time: "17:30", action: "返回恩納村", desc: "車程約 1 小時。", icon: "&#128663;", map: null },
-                    { time: "18:30", action: "晚餐：恩納村周邊", desc: "可選擇沖繩在地居酒屋或西餐廳。", icon: "&#127869;&#65039;", map: null }
+                    { time: "17:30", action: "返回名護市民宿", desc: "從古宇利島返回，車程約 30 分鐘，輕鬆返回。", icon: "&#128663;", map: null },
+                    { time: "18:30", action: "晚餐：名護市區", desc: "可選擇沖繩在地居酒屋或西餐廳，或者利用民宿廚房買些和牛回來自己煎。", icon: "&#127869;&#65039;", map: null }
                 ]
             },
             {
@@ -307,11 +267,12 @@
                 title: "親近動植物與美式風情",
                 highlight: "名護植物園、美國村",
                 details: [
-                    { time: "09:30", action: "名護植物園 (Neo Park Okinawa)", desc: "非常適合5歲以下小孩！可以近距離餵食鳥類，還有小火車可以搭乘。建議停留: 2.5小時", icon: "&#129410;", map: "https://goo.gl/maps/example_neo_park" },
-                    { time: "12:30", action: "午餐：名護市區", desc: "推薦名護特產：百年古家 大家 (阿古豬/沖繩麵)，環境古色古香。", icon: "&#127836;", map: "https://goo.gl/maps/example_ufuya" },
-                    { time: "14:30", action: "前往美國村", desc: "開車往南前往北谷町，車程約 1 小時。", icon: "&#128663;", map: null },
-                    { time: "15:30", action: "美國村 (American Village)", desc: "充滿異國風情的色彩建築，適合推車漫步拍照。日落時分可至日落海灘旁看海。", icon: "&#127873;", map: "https://goo.gl/maps/example_american_village" },
-                    { time: "18:00", action: "晚餐：美國村內", desc: "可選擇美式漢堡、塔可飯或迴轉壽司(如: 迴轉壽司市場 美浜店)。", icon: "&#127828;", map: null }
+                    { time: "09:30", action: "名護植物園 (Neo Park Okinawa)", desc: "離民宿很近！非常適合5歲以下小孩，可以近距離餵鳥，搭乘小火車。建議停留: 2.5小時", icon: "&#129410;", map: "https://goo.gl/maps/example_neo_park" },
+                    { time: "12:30", action: "午餐：名護市區", desc: "可選擇暖暮拉麵 (名護店) 或是當地知名的食堂。", icon: "&#127836;", map: null },
+                    { time: "14:00", action: "前往美國村", desc: "開車往南前往北谷町，車程約 45 分鐘。", icon: "&#128663;", map: null },
+                    { time: "15:00", action: "美國村 (American Village)", desc: "充滿異國風情的色彩建築，適合推車漫步拍照。日落時分可至日落海灘旁看海。", icon: "&#127873;", map: "https://goo.gl/maps/example_american_village" },
+                    { time: "18:00", action: "晚餐：美國村內", desc: "可選擇美式漢堡、塔可飯或迴轉壽司(如: 迴轉壽司市場 美浜店)。", icon: "&#127828;", map: null },
+                    { time: "20:00", action: "返回民宿", desc: "開車返回名護市。", icon: "&#128663;", map: null }
                 ]
             },
             {
@@ -320,12 +281,12 @@
                 title: "文青散策與頂級和牛饗宴",
                 highlight: "港川外人住宅區、PARCO CITY、敘敘院",
                 details: [
-                    { time: "10:00", action: "恩納村飯店 Check-out", desc: "帶著行李往南移動。", icon: "&#129619;", map: null },
+                    { time: "10:00", action: "民宿 Check-out (The Ritz Okinawa Kise)", desc: "整理行李，將民宿恢復原狀，準備往南移動。", icon: "&#129619;", map: null },
                     { time: "11:00", action: "港川外人住宅區", desc: "昔日美軍眷村改建，現在充滿可愛的甜點店與咖啡館。推薦購買 oHacorte 水果塔。適合拍照。建議停留: 1.5小時", icon: "&#127960;&#65039;", map: "https://goo.gl/maps/example_minatogawa" },
                     { time: "12:30", action: "午餐：港川周邊", desc: "推薦在地知名的沖繩麵店：雞湯拉麵屋或沖繩麵。", icon: "&#127836;", map: null },
                     { time: "14:00", action: "SAN-A 浦添西海岸 PARCO CITY", desc: "沖繩最大級購物中心！室內有冷氣，非常適合下午避暑，小孩有遊戲區，大人可盡情血拚。", icon: "&#128188;", map: "https://goo.gl/maps/example_parco_city" },
                     { time: "18:00", action: "晚餐：敘敘院 (PARCO CITY店)", desc: "【必吃】提前預訂窗邊座位可看海景。頂級燒肉饗宴，享受入口即化的和牛。(高預算餐點)", icon: "&#129385;", map: "https://goo.gl/maps/example_jojoen_parco" },
-                    { time: "20:30", action: "飯店 Check-in (那霸市)", desc: "開車前往那霸市區飯店入住。", icon: "&#127976;", map: null }
+                    { time: "20:30", action: "飯店 Check-in (THE NEST NAHA)", desc: "開車前往那霸市區飯店 (THE NEST NAHA) 入住。", icon: "&#127976;", map: null }
                 ]
             },
             {
@@ -360,7 +321,7 @@
                 title: "滿載而歸",
                 highlight: "歸還車輛、搭機",
                 details: [
-                    { time: "07:00", action: "飯店 Check-out", desc: "準備好所有行李，確認沒有遺漏。", icon: "&#129619;", map: null },
+                    { time: "07:00", action: "飯店 Check-out", desc: "準備好所有行李，確認沒有遺漏。離開 THE NEST NAHA。", icon: "&#129619;", map: null },
                     { time: "07:30", action: "OTS 還車 (臨空豐崎或機場旁)", desc: "請務必預留加滿油及還車檢查的時間 (至少抓 40 分鐘)。搭乘接駁車前往機場。", icon: "&#128663;", map: null },
                     { time: "08:30", action: "抵達那霸機場 (OKA)", desc: "辦理 IT289 報到手續與托運行李。逛逛國內線航廈的伴手禮店(選擇比國際線多)。", icon: "&#9992;&#65039;", map: null },
                     { time: "10:55", action: "搭機返台", desc: "帶著滿滿的夏日回憶，平安回家！", icon: "&#127968;", map: null }
@@ -387,11 +348,9 @@
             // 3a. Render Itinerary
             const itineraryContainer = document.getElementById('itinerary-container');
             itineraryData.forEach((dayData, index) => {
-                // Card Wrapper
                 const card = document.createElement('div');
                 card.className = "bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden";
                 
-                // Header (Clickable)
                 const header = document.createElement('button');
                 header.className = "w-full text-left px-6 py-4 bg-gray-50 hover:bg-okinawa-sky transition flex justify-between items-center focus:outline-none itinerary-header";
                 header.innerHTML = `
@@ -408,7 +367,7 @@
                     <span class="text-gray-400 transform transition-transform duration-300 icon-chevron">&#9660;</span>
                 `;
 
-                // Content (Timeline)
+                // ** 這裡套用了之前修復時間軸疊字的 CSS **
                 const content = document.createElement('div');
                 content.className = "px-6 py-4 hidden itinerary-content";
                 
@@ -438,13 +397,8 @@
                 card.appendChild(content);
                 itineraryContainer.appendChild(card);
 
-                // Accordion Event Listener
                 header.addEventListener('click', () => {
                     const isHidden = content.classList.contains('hidden');
-                    // Optional: Close all others
-                    // document.querySelectorAll('.itinerary-content').forEach(el => el.classList.add('hidden'));
-                    // document.querySelectorAll('.icon-chevron').forEach(el => el.style.transform = 'rotate(0deg)');
-                    
                     if (isHidden) {
                         content.classList.remove('hidden');
                         header.querySelector('.icon-chevron').style.transform = 'rotate(180deg)';
@@ -455,7 +409,6 @@
                 });
             });
 
-            // Expand All Button
             document.getElementById('expand-all-btn').addEventListener('click', (e) => {
                 const isExpanding = e.target.innerText === "展開全部";
                 document.querySelectorAll('.itinerary-content').forEach(el => {
@@ -468,9 +421,7 @@
                 e.target.innerText = isExpanding ? "收合全部" : "展開全部";
             });
 
-            // Open Day 1 by default
             document.querySelector('.itinerary-header').click();
-
 
             // 3b. Render Food Grid
             const foodGrid = document.getElementById('food-grid');
@@ -490,25 +441,19 @@
                 });
             };
             
-            // Initial render
             renderFood('all');
 
-            // Food Filter Event Listeners
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    // Update active styling
                     document.querySelectorAll('.filter-btn').forEach(b => {
                         b.classList.remove('bg-okinawa-blue', 'text-white');
                         b.classList.add('bg-white', 'text-gray-600');
                     });
                     e.target.classList.remove('bg-white', 'text-gray-600');
                     e.target.classList.add('bg-okinawa-blue', 'text-white');
-                    
-                    // Render filtered data
                     renderFood(e.target.getAttribute('data-filter'));
                 });
             });
-
 
             // 3c. Render Chart.js
             const ctx = document.getElementById('budgetChart').getContext('2d');
@@ -518,34 +463,17 @@
                     labels: ['餐飲 (包含敘敘院/阿古豬)', '景點門票', '油資與過路費', '雜支/點心'],
                     datasets: [{
                         data: [900, 300, 150, 150],
-                        backgroundColor: [
-                            '#FF6F59', // okinawa-coral
-                            '#007B99', // okinawa-blue
-                            '#0d9488', // teal-600
-                            '#fb923c'  // orange-400
-                        ],
+                        backgroundColor: ['#FF6F59', '#007B99', '#0d9488', '#fb923c'],
                         borderWidth: 0,
                         hoverOffset: 4
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false, // MANDATORY for responsive chart containers
+                    maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                font: { family: "'Noto Sans TC', sans-serif" },
-                                padding: 20
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return ` ${context.label}: NT$ ${context.raw}`;
-                                }
-                            }
-                        }
+                        legend: { position: 'bottom', labels: { font: { family: "'Noto Sans TC', sans-serif" }, padding: 20 } },
+                        tooltip: { callbacks: { label: function(context) { return ` ${context.label}: NT$ ${context.raw}`; } } }
                     },
                     cutout: '65%'
                 }
@@ -554,16 +482,9 @@
             // 3d. Mobile Menu Toggle
             const menuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            
-            menuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Close mobile menu when a link is clicked
+            menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
             document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
+                link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); });
             });
         });
     </script>
