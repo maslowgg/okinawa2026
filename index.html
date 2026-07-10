@@ -62,12 +62,15 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <a href="#" class="text-xl font-bold text-okinawa-blue tracking-wider">&#9992;&#65039; 沖繩親子遊</a>
-                <div class="hidden md:flex space-x-6">
+                
+                <div class="hidden md:flex items-center space-x-6">
                     <a href="#overview" class="text-gray-600 hover:text-okinawa-coral font-medium transition">行程總覽</a>
                     <a href="#itinerary" class="text-gray-600 hover:text-okinawa-coral font-medium transition">每日行程</a>
+                    <a href="#accommodation" class="text-gray-600 hover:text-okinawa-coral font-medium transition">住宿資訊</a>
                     <a href="#food" class="text-gray-600 hover:text-okinawa-coral font-medium transition">必吃美食</a>
-                    <a href="#budget" class="text-gray-600 hover:text-okinawa-coral font-medium transition">預算分析</a>
+                    <a href="#budget" class="text-gray-600 hover:text-okinawa-coral font-medium transition">費用計算</a>
                 </div>
+
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" class="md:hidden text-2xl focus:outline-none">&#9776;</button>
             </div>
@@ -76,8 +79,9 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
             <a href="#overview" class="block py-3 px-4 text-gray-700 hover:bg-okinawa-sky">行程總覽</a>
             <a href="#itinerary" class="block py-3 px-4 text-gray-700 hover:bg-okinawa-sky">每日行程</a>
+            <a href="#accommodation" class="block py-3 px-4 text-gray-700 hover:bg-okinawa-sky">住宿資訊</a>
             <a href="#food" class="block py-3 px-4 text-gray-700 hover:bg-okinawa-sky">必吃美食</a>
-            <a href="#budget" class="block py-3 px-4 text-gray-700 hover:bg-okinawa-sky">預算分析</a>
+            <a href="#budget" class="block py-3 px-4 text-gray-700 hover:bg-okinawa-sky">費用計算</a>
         </div>
     </nav>
 
@@ -111,13 +115,12 @@
                     <ul class="text-gray-600 space-y-2 text-sm">
                         <li><strong>去程：</strong> 台灣虎航 IT288 (13:00抵達)</li>
                         <li><strong>回程：</strong> 台灣虎航 IT289 (10:55起飛)</li>
-                        <li><strong>租車建議：</strong> 共 9 人含 3 張兒童汽座及行李，強烈建議於 OTS 租賃 <strong>兩台休旅車</strong>，並善用民宿提供的免費雙車位。</li>
                     </ul>
                 </div>
                 <!-- Accommodation Logic -->
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="text-3xl mb-3">&#127976;</div>
-                    <h3 class="text-lg font-bold text-okinawa-blue mb-2">住宿策略</h3>
+                    <h3 class="text-lg font-bold text-okinawa-blue mb-2">住宿地點</h3>
                     <ul class="text-gray-600 space-y-2 text-sm">
                         <li><strong>7/25 - 7/28 (名護市喜瀨 3晚)：</strong><br>入住 <strong>The Ritz Okinawa Kise</strong>。3LDK 大空間附雙衛浴，極度適合大家庭，且附帶兩個免費車位，前往古宇利島與水族館非常近。</li>
                         <li><strong>7/28 - 7/31 (那霸市 3晚)：</strong><br>入住 <strong>THE NEST NAHA</strong>。市區便利性極佳，採買方便，最後一天前往機場還車也相當快速。</li>
@@ -151,7 +154,165 @@
             </div>
         </section>
 
-        <!-- Section 3: Must-Eat Food Filter -->
+        <!-- Section: Accommodation Info -->
+        <section id="accommodation" class="scroll-mt-20">
+            <div class="mb-8 border-l-4 border-okinawa-coral pl-4">
+                <h2 class="text-2xl font-bold text-okinawa-dark">住宿與入住資訊</h2>
+                <p class="text-gray-600 mt-2">詳細地址、導航資訊及各項入住規定，方便旅途中隨時查閱。</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Hotel 1: The Ritz Okinawa Kise -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-4xl">&#127969;</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-okinawa-blue">The Ritz Okinawa Kise</h3>
+                            <p class="text-sm text-gray-500">入住期間：7/25 (六) - 7/28 (二)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                        <!-- Left Column: Location & Navigation -->
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm font-bold text-gray-700 mb-1">&#128205; 地址：</p>
+                                <p class="text-sm text-gray-600 mb-3">202 Kise, Nago, Okinawa 905-0026日本</p>
+                                <p class="text-sm font-bold text-gray-700 mb-1">&#128663; Mapcode：</p>
+                                <p class="text-sm text-gray-600 mb-3 tracking-wider bg-white inline-block px-2 py-1 rounded border border-gray-200">206 413 674*11</p>
+                                <a href="https://maps.app.goo.gl/N9jT5SAFZRDRLyJU6" target="_blank" class="inline-block text-sm bg-okinawa-blue text-white px-4 py-2 rounded shadow hover:bg-opacity-90 transition">&#128506;&#65039; Google Map 導航</a>
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2 border-b pb-1">開車抵達指引</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">
+                                    從那霸機場出發，驅車沿高速公路行駛1小時左右從高速公路出口「許田」出來，再行駛5-10分鐘可以看到地標建築<strong class="text-okinawa-coral">【沖縄そば】店</strong>。<br>
+                                    請在即將到達該店鋪時，右轉進入路口，即可看到2棟風格別致的別墅。別墅附有 <strong class="text-okinawa-blue">2個免費車位</strong> 可以停車。
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Check-in & Contact -->
+                        <div class="space-y-4">
+                            <div class="bg-orange-50 border border-orange-200 p-4 rounded-lg">
+                                <h4 class="font-bold text-orange-800 mb-2 flex items-center gap-2">&#9888;&#65039; 護照與密碼提交 (重要)</h4>
+                                <p class="text-sm text-orange-700 leading-relaxed mb-2">
+                                    別墅為電子鎖自助入住。日本政府法令規定，無日本國內住所之外國人需出示護照。<br>
+                                    請務必於 <strong class="text-red-600">入住日 3 天前</strong>，透過 Email 或微信發送「全員的護照首頁照片」。<br>
+                                    管理員將於入住前三日，傳送房門電子鎖密碼。
+                                </p>
+                                <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000130600_00001.html" target="_blank" class="text-xs text-orange-600 underline">政府法令原文連結</a>
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2 border-b pb-1">實用資訊手冊 (PDF)</h4>
+                                <ul class="text-sm space-y-2">
+                                    <li><a href="https://1drv.ms/b/s!AlWpimwlRo2AgZg1DVs_W45w9wENkQ?e=cfiClp" target="_blank" class="text-okinawa-blue hover:underline">1. 設施介紹與路線</a></li>
+                                    <li><a href="https://1drv.ms/p/s!AlWpimwlRo2AgZ1pXZKPhqSvCrMgfQ?e=3Rev7Z" target="_blank" class="text-okinawa-blue hover:underline">2. 住宿須知</a></li>
+                                    <li><a href="https://1drv.ms/b/s!AlWpimwlRo2AgbB70VXh6Cytw8HGVA?e=uwJPqV" target="_blank" class="text-okinawa-blue hover:underline">3. 觀光、海灘、飲食店介紹</a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2 border-b pb-1">聯絡管理員 (Lina)</h4>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>語言：中文、日文</li>
+                                    <li>手機：+81 80-3226-1981</li>
+                                    <li>LINE: <a href="https://line.me/ti/p/kBHCP6-H3s" target="_blank" class="text-okinawa-blue hover:underline">點此加入</a></li>
+                                    <li>WeChat: linaokinawa</li>
+                                    <li>Email: linamizi2020@gmail.com</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotel 2: THE NEST NAHA -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-4xl">&#127976;</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-okinawa-blue">THE NEST NAHA</h3>
+                            <p class="text-sm text-gray-500">入住期間：7/28 (二) - 7/31 (五)</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-lg mb-6 inline-block w-full md:w-auto md:min-w-[350px]">
+                        <p class="text-sm font-bold text-gray-700 mb-1">&#128205; 地址：</p>
+                        <p class="text-sm text-gray-600 mb-3">1 Chome-6-1 Nishi, Naha, Okinawa 900-0036日本</p>
+                        <p class="text-sm font-bold text-gray-700 mb-1">&#128663; Mapcode：</p>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <p class="text-sm text-gray-600 tracking-wider bg-white inline-block px-2 py-1 rounded border border-gray-200">33 155 027*46</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=THE+NEST+NAHA" target="_blank" class="inline-block text-sm bg-okinawa-blue text-white px-4 py-2 rounded shadow hover:bg-opacity-90 transition">&#128506;&#65039; Google Map 導航</a>
+                        </div>
+                    </div>
+
+                    <div class="text-sm text-gray-700 space-y-6">
+                        <p class="italic text-gray-500">※ 以下為飯店官方入住須知翻譯：</p>
+                        
+                        <p class="leading-relaxed">
+                            感謝您預訂 THE NEST 那霸。為了讓各位能舒適地度過，在此為您提供本館的相關入住資訊。
+                        </p>
+
+                        <div>
+                            <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#9200; 關於辦理入住 (Check-in)</h4>
+                            <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded">
+                                本館辦理入住的受理時間為 <strong>15:00 ～ 凌晨 3:00</strong>。當天 15:00 前僅提供寄放行李服務。<br>
+                                基於安全考量，<strong>正面大門將於凌晨 1:00 ～ 6:00 期間上鎖</strong>（辦理入住後可使用房卡解鎖）。若您的抵達時間超過凌晨 1:00，請使用正面大門處的對講機告知工作人員您要辦理入住。<br>
+                                <span class="text-red-500 text-xs">*若超過受理時間，將視同取消訂房，並可能依據取消政策收取取消費用，敬請見諒。</span>
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#128682; 關於退房 (Check-out)</h4>
+                            <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded">
+                                退房時間為 <strong>11:00</strong>。<br>
+                                若您希望延遲退房，最晚可延長至 13:00（每延長 1 小時將收取 1,000 日圓 / 每房）。<br>
+                                <span class="text-red-500 text-xs">*請注意，若超過 13:00，將視同續住，並會收取一晚的住宿費用。</span>
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#127647; 停車場資訊 (Parking)</h4>
+                                <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded">
+                                    本館立體停車場收費為 <strong>每晚 1,800 日圓</strong>。<br>
+                                    不提供事前預約，依旅客抵達順序引導停車。若遇客滿，請使用附近的收費停車場。
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#128685; 關於吸菸 (Smoking)</h4>
+                                <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded text-red-600">
+                                    本館 <strong>全面禁菸</strong>，未設置吸菸區。<br>萬一發現有在室內吸菸之情事，可能會向您收取特殊清潔費。
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#128230; 行李郵寄服務 (Shipping)</h4>
+                                <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded">
+                                    本館提供黑貓宅急便（クロネコヤマト）的郵寄服務。<br>
+                                    （僅限日本國內）
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#128222; 其他洽詢事項 (Contact)</h4>
+                                <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded">
+                                    可透過電話或線上聊天服務洽詢。根據時段不同，可能會有電話較難接通或回覆訊息較慢的情況，敬請見諒。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-center font-bold text-okinawa-blue mt-4">
+                            衷心期待您當日的到來，路上請小心安全！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Must-Eat Food Filter -->
         <section id="food" class="scroll-mt-20">
             <div class="mb-8 border-l-4 border-okinawa-coral pl-4">
                 <h2 class="text-2xl font-bold text-okinawa-dark">美食探索指南</h2>
@@ -172,47 +333,60 @@
             </div>
         </section>
 
-        <!-- Section 4: Budget Analysis -->
+        <!-- Section 4: Cost Calculator -->
         <section id="budget" class="scroll-mt-20">
             <div class="mb-8 border-l-4 border-okinawa-blue pl-4">
-                <h2 class="text-2xl font-bold text-okinawa-dark">預算可行性分析</h2>
-                <p class="text-gray-600 mt-2">目標：每人每日 NT$1,500 (約 7,150 日圓，以匯率 0.21 估算)。此圖表展示每日預算的建議分配方式。</p>
+                <h2 class="text-2xl font-bold text-okinawa-dark">費用分攤與匯率換算</h2>
+                <p class="text-gray-600 mt-2">輸入本次旅程的總費用來計算每人分攤金額，並可使用即時匯率換算台日幣。</p>
             </div>
 
-            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-8">
-                <!-- Chart Container (Follows Strict Specs) -->
-                <div class="w-full md:w-1/2">
-                    <div class="chart-container">
-                        <canvas id="budgetChart"></canvas>
+            <!-- Split Cost Calculator -->
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-8 mb-6">
+                <!-- Calculator Inputs -->
+                <div class="w-full md:w-1/2 space-y-6">
+                    <div>
+                        <label for="total-cost" class="block text-sm font-bold text-gray-700 mb-2">總費用 (NT$ / JPY 皆可)</label>
+                        <input type="number" id="total-cost" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-okinawa-blue focus:border-okinawa-blue outline-none transition" placeholder="例如：120000" min="0">
+                    </div>
+                    <div>
+                        <label for="people-count" class="block text-sm font-bold text-gray-700 mb-2">分攤人數 (人)</label>
+                        <input type="number" id="people-count" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-okinawa-blue focus:border-okinawa-blue outline-none transition" value="6" min="1">
+                        <p class="text-xs text-gray-500 mt-1">*預設以 6 位大人平均分攤</p>
                     </div>
                 </div>
                 
-                <!-- Budget Text Breakdown -->
-                <div class="w-full md:w-1/2 space-y-4">
-                    <h3 class="text-xl font-bold text-okinawa-dark">每日 NT$1,500 分配策略</h3>
-                    <p class="text-sm text-gray-600">透過高低消費穿插達成平衡。例如吃敘敘院當天，午餐可選擇平價沖繩麵；善用民宿廚房準備簡單早餐。</p>
-                    
-                    <div class="space-y-3 mt-4">
-                        <div class="flex justify-between items-center pb-2 border-b border-gray-100">
-                            <span class="flex items-center gap-2"><span class="text-xl">&#127828;</span> 總餐飲費 (60%)</span>
-                            <span class="font-bold text-okinawa-coral">NT$ 900</span>
-                        </div>
-                        <div class="flex justify-between items-center pb-2 border-b border-gray-100">
-                            <span class="flex items-center gap-2"><span class="text-xl">&#127903;&#65039;</span> 景點門票 (20%)</span>
-                            <span class="font-bold text-okinawa-blue">NT$ 300</span>
-                        </div>
-                        <div class="flex justify-between items-center pb-2 border-b border-gray-100">
-                            <span class="flex items-center gap-2"><span class="text-xl">&#9981;&#65039;</span> 油資與過路費 (10%)</span>
-                            <span class="font-bold text-teal-600">NT$ 150</span>
-                        </div>
-                        <div class="flex justify-between items-center pb-2 border-b border-gray-100">
-                            <span class="flex items-center gap-2"><span class="text-xl">&#127846;</span> 雜支/點心 (10%)</span>
-                            <span class="font-bold text-orange-400">NT$ 150</span>
+                <!-- Calculator Output -->
+                <div class="w-full md:w-1/2 bg-okinawa-sky rounded-xl p-8 text-center flex flex-col justify-center h-full min-h-[200px] border border-blue-100">
+                    <h3 class="text-lg font-bold text-okinawa-dark mb-2">每人平均費用</h3>
+                    <div class="text-4xl md:text-5xl font-bold text-okinawa-coral break-words" id="per-person-cost">0</div>
+                </div>
+            </div>
+
+            <!-- Real-time Currency Converter -->
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">
+                <div class="flex items-center gap-2 mb-6 border-b border-gray-100 pb-4">
+                    <span class="text-2xl">&#128177;</span>
+                    <h3 class="text-lg font-bold text-okinawa-dark">即時匯率換算</h3>
+                    <span id="rate-display" class="text-sm font-medium text-okinawa-blue bg-blue-50 px-3 py-1 rounded-full ml-auto">載入匯率中...</span>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center gap-4">
+                    <div class="w-full relative">
+                        <label class="block text-xs font-bold text-gray-500 mb-2">日幣 (JPY)</label>
+                        <div class="relative flex items-center">
+                            <span class="absolute left-4 text-gray-500 font-bold">¥</span>
+                            <input type="number" id="jpy-input" class="w-full pl-8 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-okinawa-coral focus:border-okinawa-coral outline-none transition" placeholder="輸入日幣金額">
                         </div>
                     </div>
                     
-                    <div class="bg-okinawa-sky p-4 rounded-lg mt-4 text-sm text-gray-700">
-                        <strong>&#128161; 規劃師小提醒：</strong> 5歲以下許多景點免門票，這部分省下來的額度可以大力補貼大人去吃高單價的「敘敘院燒肉」！
+                    <div class="text-2xl text-gray-400 rotate-90 md:rotate-0 my-2 md:my-0 mt-6">&#8644;</div>
+                    
+                    <div class="w-full relative">
+                        <label class="block text-xs font-bold text-gray-500 mb-2">台幣 (TWD)</label>
+                        <div class="relative flex items-center">
+                            <span class="absolute left-4 text-gray-500 font-bold">$</span>
+                            <input type="number" id="twd-input" class="w-full pl-8 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-okinawa-blue focus:border-okinawa-blue outline-none transition" placeholder="輸入台幣金額">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -264,14 +438,15 @@
             {
                 day: 3,
                 date: "7/27 (一)",
-                title: "親近動植物與美式風情",
-                highlight: "名護植物園、美國村",
+                title: "動物體驗、室內尋寶與美式風情",
+                highlight: "名護植物園、ぼうけんの国、美國村",
                 details: [
-                    { time: "09:30", action: "名護植物園 (Neo Park Okinawa)", desc: "離民宿很近！非常適合5歲以下小孩，可以近距離餵鳥，搭乘小火車。建議停留: 2.5小時", icon: "&#129410;", map: "https://goo.gl/maps/example_neo_park" },
-                    { time: "12:30", action: "午餐：名護市區", desc: "可選擇暖暮拉麵 (名護店) 或是當地知名的食堂。", icon: "&#127836;", map: null },
-                    { time: "14:00", action: "前往美國村", desc: "開車往南前往北谷町，車程約 45 分鐘。", icon: "&#128663;", map: null },
-                    { time: "15:00", action: "美國村 (American Village)", desc: "充滿異國風情的色彩建築，適合推車漫步拍照。日落時分可至日落海灘旁看海。", icon: "&#127873;", map: "https://goo.gl/maps/example_american_village" },
-                    { time: "18:00", action: "晚餐：美國村內", desc: "可選擇美式漢堡、塔可飯或迴轉壽司(如: 迴轉壽司市場 美浜店)。", icon: "&#127828;", map: null },
+                    { time: "09:30", action: "名護植物園 (Neo Park Okinawa)", desc: "離民宿很近！非常適合5歲以下小孩，可以近距離餵鳥，搭乘小火車。建議停留: 2小時", icon: "&#129410;", map: "https://goo.gl/maps/example_neo_park" },
+                    { time: "11:45", action: "午餐：名護市區或往南途中", desc: "可選擇暖暮拉麵 (名護店) 或是當地知名的家庭餐廳，吃飽後往南移動。", icon: "&#127836;", map: null },
+                    { time: "13:30", action: "釣って見つけるぼうけんの国", desc: "室內尋寶與釣魚樂園！有冷氣開放，讓小孩挖寶石、找化石，避開午後炎夏的好去處。建議停留: 1.5~2小時", icon: "&#127907;", map: "https://www.google.com/maps/search/?api=1&query=釣って見つけるぼうけんの国+沖縄" },
+                    { time: "15:30", action: "前往美國村", desc: "繼續往南前往北谷町，車程約 30 分鐘。", icon: "&#128663;", map: null },
+                    { time: "16:00", action: "美國村 (American Village)", desc: "傍晚抵達較不炎熱，充滿異國風情的色彩建築，適合推車漫步拍照。日落時分可至日落海灘旁看海。", icon: "&#127873;", map: "https://goo.gl/maps/example_american_village" },
+                    { time: "18:30", action: "晚餐：美國村內", desc: "可選擇美式漢堡、塔可飯或迴轉壽司(如: 迴轉壽司市場 美浜店)。", icon: "&#127828;", map: null },
                     { time: "20:00", action: "返回民宿", desc: "開車返回名護市。", icon: "&#128663;", map: null }
                 ]
             },
@@ -455,31 +630,67 @@
                 });
             });
 
-            // 3c. Render Chart.js
-            const ctx = document.getElementById('budgetChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['餐飲 (包含敘敘院/阿古豬)', '景點門票', '油資與過路費', '雜支/點心'],
-                    datasets: [{
-                        data: [900, 300, 150, 150],
-                        backgroundColor: ['#FF6F59', '#007B99', '#0d9488', '#fb923c'],
-                        borderWidth: 0,
-                        hoverOffset: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'bottom', labels: { font: { family: "'Noto Sans TC', sans-serif" }, padding: 20 } },
-                        tooltip: { callbacks: { label: function(context) { return ` ${context.label}: NT$ ${context.raw}`; } } }
-                    },
-                    cutout: '65%'
+            // 3c. Calculator Logic (Cost Split)
+            const totalCostInput = document.getElementById('total-cost');
+            const peopleCountInput = document.getElementById('people-count');
+            const perPersonCostDisplay = document.getElementById('per-person-cost');
+
+            function calculateCost() {
+                const total = parseFloat(totalCostInput.value) || 0;
+                const people = parseInt(peopleCountInput.value) || 1;
+                
+                if (people > 0) {
+                    const costPerPerson = Math.round(total / people);
+                    perPersonCostDisplay.innerText = costPerPerson.toLocaleString();
+                } else {
+                    perPersonCostDisplay.innerText = '0';
+                }
+            }
+
+            totalCostInput.addEventListener('input', calculateCost);
+            peopleCountInput.addEventListener('input', calculateCost);
+
+            // 3d. Currency Converter Logic
+            const jpyInput = document.getElementById('jpy-input');
+            const twdInput = document.getElementById('twd-input');
+            const rateDisplay = document.getElementById('rate-display');
+            let exchangeRateTWD = 0.21; // Fallback rate
+
+            async function fetchExchangeRate() {
+                try {
+                    const response = await fetch('https://open.er-api.com/v6/latest/JPY');
+                    const data = await response.json();
+                    if(data && data.rates && data.rates.TWD) {
+                        exchangeRateTWD = data.rates.TWD;
+                        rateDisplay.innerText = `1 JPY ≈ ${exchangeRateTWD.toFixed(4)} TWD`;
+                    }
+                } catch (error) {
+                    console.error("無法抓取即時匯率，使用參考值。", error);
+                    rateDisplay.innerText = `(參考) 1 JPY ≈ 0.21 TWD`;
+                }
+            }
+
+            fetchExchangeRate();
+
+            jpyInput.addEventListener('input', () => {
+                const jpy = parseFloat(jpyInput.value);
+                if(!isNaN(jpy)) {
+                    twdInput.value = Math.round(jpy * exchangeRateTWD);
+                } else {
+                    twdInput.value = '';
                 }
             });
 
-            // 3d. Mobile Menu Toggle
+            twdInput.addEventListener('input', () => {
+                const twd = parseFloat(twdInput.value);
+                if(!isNaN(twd)) {
+                    jpyInput.value = Math.round(twd / exchangeRateTWD);
+                } else {
+                    jpyInput.value = '';
+                }
+            });
+
+            // 3e. Mobile Menu Toggle
             const menuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
