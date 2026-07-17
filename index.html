@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-TW" class="scroll-smooth">
 <head>
@@ -6,8 +7,6 @@
     <title>2026 沖繩七天六夜親子自駕遊 | 專屬行程企劃</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <script>
         tailwind.config = {
@@ -33,20 +32,6 @@
         
         body { font-family: 'Noto Sans TC', sans-serif; }
         
-        /* Chart Container Styling */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container { height: 350px; }
-        }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #F4EBD0; }
@@ -114,7 +99,7 @@
                     <h3 class="text-lg font-bold text-okinawa-blue mb-2">航班與交通</h3>
                     <ul class="text-gray-600 space-y-2 text-sm">
                         <li><strong>去程：</strong> 台灣虎航 IT288 (13:00抵達)</li>
-                        <li><strong>回程：</strong> 台灣虎航 IT289 (10:55起飛)</li>
+                        <li><strong>回程：</strong> 台灣虎航 IT289 (14:00起飛)</li>
                     </ul>
                 </div>
                 <!-- Accommodation Logic -->
@@ -122,7 +107,7 @@
                     <div class="text-3xl mb-3">&#127976;</div>
                     <h3 class="text-lg font-bold text-okinawa-blue mb-2">住宿地點</h3>
                     <ul class="text-gray-600 space-y-2 text-sm">
-                        <li><strong>7/25 - 7/28 (名護市喜瀨 3晚)：</strong><br>入住 <strong>The Ritz Okinawa Kise</strong>。3LDK 大空間附雙衛浴，極度適合大家庭，且附帶兩個免費車位，前往古宇利島與水族館非常近。</li>
+                        <li><strong>7/25 - 7/28 (名護市喜瀨 3晚)：</strong><br>入住 <strong>The Ritz Okinawa Kise</strong>。3LDK 大空間附雙衛浴，附帶兩個免費車位，前往北部景點非常近。</li>
                         <li><strong>7/28 - 7/31 (那霸市 3晚)：</strong><br>入住 <strong>THE NEST NAHA</strong>。市區便利性極佳，採買方便，最後一天前往機場還車也相當快速。</li>
                     </ul>
                 </div>
@@ -131,8 +116,8 @@
                     <div class="text-3xl mb-3">&#128176;</div>
                     <h3 class="text-lg font-bold text-okinawa-blue mb-2">預算與風格</h3>
                     <ul class="text-gray-600 space-y-2 text-sm">
-                        <li><strong>風格：</strong> 親子慢遊。每日景點安排 2-3 個，保留彈性，避免走馬看花。</li>
-                        <li><strong>日常預算：</strong> 每人每日 NT$1,500。<br><em>*包含餐飲+門票+過路油資。敘敘院與阿古豬會佔用較高額度，將以平價美食(如沖繩麵)平衡。</em></li>
+                        <li><strong>風格：</strong> 親子慢遊。每日景點安排 2-3 個，保留彈性。</li>
+                        <li><strong>日常預算：</strong> 每人每日 NT$1,500。<br><em>*包含餐飲+門票+過路油資。敘敘院與壽喜燒等大餐會佔用較高額度，將以平價美食平衡。</em></li>
                     </ul>
                 </div>
             </div>
@@ -154,7 +139,7 @@
             </div>
         </section>
 
-        <!-- Section: Accommodation Info -->
+        <!-- Section 3: Accommodation Info -->
         <section id="accommodation" class="scroll-mt-20">
             <div class="mb-8 border-l-4 border-okinawa-coral pl-4">
                 <h2 class="text-2xl font-bold text-okinawa-dark">住宿與入住資訊</h2>
@@ -173,13 +158,12 @@
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
-                        <!-- Left Column: Location & Navigation -->
                         <div class="space-y-4">
                             <div class="bg-gray-50 p-4 rounded-lg">
                                 <p class="text-sm font-bold text-gray-700 mb-1">&#128205; 地址：</p>
                                 <p class="text-sm text-gray-600 mb-3">202 Kise, Nago, Okinawa 905-0026日本</p>
                                 <p class="text-sm font-bold text-gray-700 mb-1">&#128663; Mapcode：</p>
-                                <p class="text-sm text-gray-600 mb-3 tracking-wider bg-white inline-block px-2 py-1 rounded border border-gray-200">206 413 674*11</p>
+                                <p class="text-sm text-gray-600 mb-3 tracking-wider bg-white inline-block px-2 py-1 rounded border border-gray-200">206 413 674*11</p><br>
                                 <a href="https://maps.app.goo.gl/N9jT5SAFZRDRLyJU6" target="_blank" class="inline-block text-sm bg-okinawa-blue text-white px-4 py-2 rounded shadow hover:bg-opacity-90 transition">&#128506;&#65039; Google Map 導航</a>
                             </div>
 
@@ -192,16 +176,12 @@
                             </div>
                         </div>
 
-                        <!-- Right Column: Check-in & Contact -->
                         <div class="space-y-4">
                             <div class="bg-orange-50 border border-orange-200 p-4 rounded-lg">
                                 <h4 class="font-bold text-orange-800 mb-2 flex items-center gap-2">&#9888;&#65039; 護照與密碼提交 (重要)</h4>
                                 <p class="text-sm text-orange-700 leading-relaxed mb-2">
-                                    別墅為電子鎖自助入住。日本政府法令規定，無日本國內住所之外國人需出示護照。<br>
-                                    請務必於 <strong class="text-red-600">入住日 3 天前</strong>，透過 Email 或微信發送「全員的護照首頁照片」。<br>
-                                    管理員將於入住前三日，傳送房門電子鎖密碼。
+                                    別墅為電子鎖自助入住。請務必於 <strong class="text-red-600">入住日 3 天前</strong>，透過 Email 或微信發送「全員的護照首頁照片」。管理員將於入住前三日傳送房門電子鎖密碼。
                                 </p>
-                                <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000130600_00001.html" target="_blank" class="text-xs text-orange-600 underline">政府法令原文連結</a>
                             </div>
 
                             <div>
@@ -216,11 +196,9 @@
                             <div>
                                 <h4 class="font-bold text-gray-800 mb-2 border-b pb-1">聯絡管理員 (Lina)</h4>
                                 <ul class="text-sm text-gray-600 space-y-1">
-                                    <li>語言：中文、日文</li>
                                     <li>手機：+81 80-3226-1981</li>
                                     <li>LINE: <a href="https://line.me/ti/p/kBHCP6-H3s" target="_blank" class="text-okinawa-blue hover:underline">點此加入</a></li>
                                     <li>WeChat: linaokinawa</li>
-                                    <li>Email: linamizi2020@gmail.com</li>
                                 </ul>
                             </div>
                         </div>
@@ -250,25 +228,18 @@
                     <div class="text-sm text-gray-700 space-y-6">
                         <p class="italic text-gray-500">※ 以下為飯店官方入住須知翻譯：</p>
                         
-                        <p class="leading-relaxed">
-                            感謝您預訂 THE NEST 那霸。為了讓各位能舒適地度過，在此為您提供本館的相關入住資訊。
-                        </p>
-
                         <div>
                             <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#9200; 關於辦理入住 (Check-in)</h4>
                             <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded">
-                                本館辦理入住的受理時間為 <strong>15:00 ～ 凌晨 3:00</strong>。當天 15:00 前僅提供寄放行李服務。<br>
-                                基於安全考量，<strong>正面大門將於凌晨 1:00 ～ 6:00 期間上鎖</strong>（辦理入住後可使用房卡解鎖）。若您的抵達時間超過凌晨 1:00，請使用正面大門處的對講機告知工作人員您要辦理入住。<br>
-                                <span class="text-red-500 text-xs">*若超過受理時間，將視同取消訂房，並可能依據取消政策收取取消費用，敬請見諒。</span>
+                                受理時間為 <strong>15:00 ～ 凌晨 3:00</strong>。當天 15:00 前僅提供寄放行李。<br>
+                                <strong>正面大門將於凌晨 1:00 ～ 6:00 期間上鎖</strong>（入住後可使用房卡解鎖）。若超過凌晨 1:00 抵達，請使用正面大門處的對講機。
                             </p>
                         </div>
 
                         <div>
                             <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#128682; 關於退房 (Check-out)</h4>
                             <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded">
-                                退房時間為 <strong>11:00</strong>。<br>
-                                若您希望延遲退房，最晚可延長至 13:00（每延長 1 小時將收取 1,000 日圓 / 每房）。<br>
-                                <span class="text-red-500 text-xs">*請注意，若超過 13:00，將視同續住，並會收取一晚的住宿費用。</span>
+                                退房時間為 <strong>11:00</strong>。若需延遲最晚可延長至 13:00（每延長 1 小時收取 1,000 日圓 / 每房）。
                             </p>
                         </div>
 
@@ -276,64 +247,41 @@
                             <div>
                                 <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#127647; 停車場資訊 (Parking)</h4>
                                 <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded">
-                                    本館立體停車場收費為 <strong>每晚 1,800 日圓</strong>。<br>
-                                    不提供事前預約，依旅客抵達順序引導停車。若遇客滿，請使用附近的收費停車場。
+                                    本館立體停車場 <strong>每晚 1,800 日圓</strong>。不提供預約（先到先停）。
                                 </p>
                             </div>
                             <div>
                                 <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#128685; 關於吸菸 (Smoking)</h4>
                                 <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded text-red-600">
-                                    本館 <strong>全面禁菸</strong>，未設置吸菸區。<br>萬一發現有在室內吸菸之情事，可能會向您收取特殊清潔費。
+                                    <strong>全面禁菸</strong>，未設置吸菸區。違者將收取特殊清潔費。
                                 </p>
                             </div>
                         </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#128230; 行李郵寄服務 (Shipping)</h4>
-                                <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded">
-                                    本館提供黑貓宅急便（クロネコヤマト）的郵寄服務。<br>
-                                    （僅限日本國內）
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-okinawa-dark mb-1 flex items-center gap-2">&#128222; 其他洽詢事項 (Contact)</h4>
-                                <p class="leading-relaxed bg-white border border-gray-100 p-3 rounded">
-                                    可透過電話或線上聊天服務洽詢。根據時段不同，可能會有電話較難接通或回覆訊息較慢的情況，敬請見諒。
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <p class="text-center font-bold text-okinawa-blue mt-4">
-                            衷心期待您當日的到來，路上請小心安全！
-                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section: Must-Eat Food Filter -->
+        <!-- Section 4: Must-Eat Food Filter -->
         <section id="food" class="scroll-mt-20">
             <div class="mb-8 border-l-4 border-okinawa-coral pl-4">
                 <h2 class="text-2xl font-bold text-okinawa-dark">美食探索指南</h2>
-                <p class="text-gray-600 mt-2">整合您指定必吃的「阿古豬」與「敘敘院」，並加入在地推薦。使用按鈕篩選您想找的類型。</p>
+                <p class="text-gray-600 mt-2">整合您指定必吃的「阿古豬」、「敘敘院」與「一心壽喜燒」，並加入在地推薦。使用按鈕篩選您想找的類型。</p>
             </div>
 
-            <!-- Filters -->
             <div class="flex flex-wrap gap-2 mb-6" id="food-filters">
                 <button class="filter-btn active bg-okinawa-blue text-white px-4 py-2 rounded-full text-sm font-medium transition" data-filter="all">全部顯示</button>
-                <button class="filter-btn bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 px-4 py-2 rounded-full text-sm font-medium transition" data-filter="meat">指定肉品 (阿古豬/燒肉)</button>
+                <button class="filter-btn bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 px-4 py-2 rounded-full text-sm font-medium transition" data-filter="meat">指定肉品 (阿古豬/燒肉/壽喜燒)</button>
                 <button class="filter-btn bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 px-4 py-2 rounded-full text-sm font-medium transition" data-filter="seafood">海鮮大餐</button>
                 <button class="filter-btn bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 px-4 py-2 rounded-full text-sm font-medium transition" data-filter="cafe">甜點/文青</button>
             </div>
 
-            <!-- Food Grid -->
             <div id="food-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- JavaScript will populate this -->
             </div>
         </section>
 
-        <!-- Section 4: Cost Calculator -->
+        <!-- Section 5: Cost Calculator -->
         <section id="budget" class="scroll-mt-20">
             <div class="mb-8 border-l-4 border-okinawa-blue pl-4">
                 <h2 class="text-2xl font-bold text-okinawa-dark">費用分攤與匯率換算</h2>
@@ -342,7 +290,6 @@
 
             <!-- Split Cost Calculator -->
             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-8 mb-6">
-                <!-- Calculator Inputs -->
                 <div class="w-full md:w-1/2 space-y-6">
                     <div>
                         <label for="total-cost" class="block text-sm font-bold text-gray-700 mb-2">總費用 (NT$ / JPY 皆可)</label>
@@ -355,7 +302,6 @@
                     </div>
                 </div>
                 
-                <!-- Calculator Output -->
                 <div class="w-full md:w-1/2 bg-okinawa-sky rounded-xl p-8 text-center flex flex-col justify-center h-full min-h-[200px] border border-blue-100">
                     <h3 class="text-lg font-bold text-okinawa-dark mb-2">每人平均費用</h3>
                     <div class="text-4xl md:text-5xl font-bold text-okinawa-coral break-words" id="per-person-cost">0</div>
@@ -395,7 +341,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-okinawa-dark text-white py-8 text-center">
+    <footer class="bg-okinawa-dark text-white py-8 text-center mt-12">
         <div class="max-w-6xl mx-auto px-4">
             <h3 class="text-lg font-bold mb-4">&#127774; 祝您有個美好的沖繩家庭之旅！</h3>
             <p class="text-gray-400 text-sm mb-2">Designed for Canvas Create Webapp Task</p>
@@ -410,97 +356,99 @@
             {
                 day: 1,
                 date: "7/25 (六)",
-                title: "抵達南國、輕食海鮮、入住名護民宿",
-                highlight: "系滿魚市場、The Ritz Okinawa Kise",
+                title: "抵達南國、市區海鮮、名護夏日祭典",
+                highlight: "牧志公設市場、名護夏日祭典、The Ritz",
                 details: [
-                    { time: "13:00", action: "抵達那霸機場", desc: "搭乘 IT288 班機抵達。辦理入境手續與領取行李。", icon: "&#9992;&#65039;", map: null },
+                    { time: "13:00", action: "抵達那霸機場", desc: "班機抵達。辦理入境手續與領取行李。", icon: "&#9992;&#65039;", map: null },
                     { time: "14:30", action: "OTS 租車 (臨空豐崎)", desc: "搭乘接駁車前往取車。確認兩台車及 3 張兒童安全座椅。", icon: "&#128663;", map: "https://goo.gl/maps/H1P3B2WzT1xP5M3eA" },
-                    { time: "15:30", action: "輕食下午茶：系滿魚市場", desc: "取車後開車約15分。吃點新鮮生魚片、海鮮燒烤墊墊胃，大人小孩都能找到喜歡的食物。建議停留: 1小時", icon: "&#127843;", map: "https://goo.gl/maps/bHkM5qQx2r4kC7H8A" },
-                    { time: "16:30", action: "向北移動", desc: "行駛沖繩自動車道前往名護市 (喜瀨)。車程約 1 小時 15 分，小孩可於車上休息。", icon: "&#128739;&#65039;", map: null },
-                    { time: "17:45", action: "民宿 Check-in (The Ritz Okinawa Kise)", desc: "抵達名護市喜瀨的民宿辦理入住，安頓行李。3LDK 大空間與雙衛浴讓大家能舒適休息。", icon: "&#127976;", map: null },
-                    { time: "18:45", action: "晚餐：名護市 阿古豬料理", desc: "【必吃】推薦『百年古家 大家』或周邊的阿古豬涮涮鍋，肉質軟嫩適合小孩。名護市區選擇多元。", icon: "&#128055;", map: "https://goo.gl/maps/example_ufuya" }
+                    { time: "15:30", action: "輕食下午茶：牧志公設市場", desc: "取車後開車前往那霸市區（約30分鐘）。在一樓挑選海鮮，上二樓代客料理。（須停周邊付費停車場）", icon: "&#127843;", map: "https://www.google.com/maps/search/?api=1&query=牧志公設市場" },
+                    { time: "17:00", action: "向北移動", desc: "從那霸交流道行駛沖繩自動車道前往名護市(喜瀨)。車程約 1 小時 15 分，小孩可於車上休息。", icon: "&#128739;&#65039;", map: null },
+                    { time: "18:15", action: "民宿 Check-in (The Ritz Okinawa Kise)", desc: "抵達名護市喜瀨的民宿辦理入住，安頓行李。", icon: "&#127976;", map: null },
+                    { time: "19:00", action: "晚餐：名護夏日祭典 (名護漁港)", desc: "【特別活動】前往一年一度的名護夏祭！晚餐直接在祭典屋台享用炒麵、章魚燒等小吃，約20:00還能欣賞燦爛的煙火秀，感受日本夏日風情！", icon: "&#127878;", map: "https://www.google.com/maps/search/?api=1&query=名護漁港" }
                 ]
             },
             {
                 day: 2,
                 date: "7/26 (日)",
-                title: "探索海洋奧秘與跨海大橋",
-                highlight: "美麗海水族館、古宇利島",
+                title: "室內尋寶、動物體驗與百年古家",
+                highlight: "ぼうけんの国、名護植物園、百年古家",
                 details: [
-                    { time: "09:00", action: "出發前往水族館", desc: "從名護民宿出發，車程約 30-40 分鐘。比從恩納出發更近！", icon: "&#128663;", map: null },
-                    { time: "09:40", action: "海洋博公園 & 美麗海水族館", desc: "觀賞黑潮之海的鯨鯊，戶外有海豚表演 (免費)。園區廣大，推車友善。建議停留: 3.5小時", icon: "&#128031;", map: "https://goo.gl/maps/c6gq1c3M1Q3yKxXN8" },
-                    { time: "13:30", action: "午餐：水族館周邊或古宇利島", desc: "可於水族館內用餐，或開車前往古宇利島享用蝦蝦飯 (Kouri Shrimp)。", icon: "&#127836;", map: "https://goo.gl/maps/example_kouri_shrimp" },
-                    { time: "15:00", action: "古宇利島 & 海洋塔", desc: "開車跨越壯觀的古宇利大橋。可參觀海洋塔看海景，或於古宇利海灘讓小孩踏浪。", icon: "&#127754;", map: "https://goo.gl/maps/example_kouri_tower" },
-                    { time: "17:30", action: "返回名護市民宿", desc: "從古宇利島返回，車程約 30 分鐘，輕鬆返回。", icon: "&#128663;", map: null },
-                    { time: "18:30", action: "晚餐：名護市區", desc: "可選擇沖繩在地居酒屋或西餐廳，或者利用民宿廚房買些和牛回來自己煎。", icon: "&#127869;&#65039;", map: null }
+                    { time: "09:30", action: "釣って見つけるぼうけんの国", desc: "驅車前往宇流麻市。室內尋寶與釣魚樂園！有冷氣開放，讓小孩挖寶石、找化石，盡情放電。建議停留: 2小時", icon: "&#127907;", map: "https://www.google.com/maps/search/?api=1&query=釣って見つけるぼうけんの国+沖縄" },
+                    { time: "12:00", action: "午餐：往名護途中", desc: "可選擇在宇流麻市或往北返回名護的路途中找家庭餐廳用餐。", icon: "&#127836;", map: null },
+                    { time: "13:30", action: "名護植物園 (Neo Park Okinawa)", desc: "返回名護市。非常適合5歲以下小孩，可以近距離餵鳥，搭乘小火車。建議停留: 2小時", icon: "&#129410;", map: "https://goo.gl/maps/example_neo_park" },
+                    { time: "16:30", action: "稍作休息 / 前往餐廳", desc: "離開植物園，提早前往餐廳避開晚餐尖峰人潮。", icon: "&#128663;", map: null },
+                    { time: "17:30", action: "晚餐：百年古家 大家", desc: "【必吃推薦】在氣氛絕佳的百年古民家享用阿古豬涮涮鍋，極度熱門，務必提前預約！", icon: "&#128055;", map: "https://goo.gl/maps/example_ufuya" },
+                    { time: "19:30", action: "返回民宿", desc: "吃飽後開車返回民宿休息。", icon: "&#127968;", map: null }
                 ]
             },
             {
                 day: 3,
                 date: "7/27 (一)",
-                title: "動物體驗、室內尋寶與美式風情",
-                highlight: "名護植物園、ぼうけんの国、美國村",
+                title: "探索海洋奧秘與古宇利絕景",
+                highlight: "美麗海水族館、古宇利島、蝦蝦飯",
                 details: [
-                    { time: "09:30", action: "名護植物園 (Neo Park Okinawa)", desc: "離民宿很近！非常適合5歲以下小孩，可以近距離餵鳥，搭乘小火車。建議停留: 2小時", icon: "&#129410;", map: "https://goo.gl/maps/example_neo_park" },
-                    { time: "11:45", action: "午餐：名護市區或往南途中", desc: "可選擇暖暮拉麵 (名護店) 或是當地知名的家庭餐廳，吃飽後往南移動。", icon: "&#127836;", map: null },
-                    { time: "13:30", action: "釣って見つけるぼうけんの国", desc: "室內尋寶與釣魚樂園！有冷氣開放，讓小孩挖寶石、找化石，避開午後炎夏的好去處。建議停留: 1.5~2小時", icon: "&#127907;", map: "https://www.google.com/maps/search/?api=1&query=釣って見つけるぼうけんの国+沖縄" },
-                    { time: "15:30", action: "前往美國村", desc: "繼續往南前往北谷町，車程約 30 分鐘。", icon: "&#128663;", map: null },
-                    { time: "16:00", action: "美國村 (American Village)", desc: "傍晚抵達較不炎熱，充滿異國風情的色彩建築，適合推車漫步拍照。日落時分可至日落海灘旁看海。", icon: "&#127873;", map: "https://goo.gl/maps/example_american_village" },
-                    { time: "18:30", action: "晚餐：美國村內", desc: "可選擇美式漢堡、塔可飯或迴轉壽司(如: 迴轉壽司市場 美浜店)。", icon: "&#127828;", map: null },
-                    { time: "20:00", action: "返回民宿", desc: "開車返回名護市。", icon: "&#128663;", map: null }
+                    { time: "09:00", action: "出發前往水族館", desc: "從名護民宿出發，車程約 30-40 分鐘。", icon: "&#128663;", map: null },
+                    { time: "09:40", action: "海洋博公園 & 美麗海水族館", desc: "觀賞黑潮之海的鯨鯊，戶外有海豚表演 (免費)。推車友善。建議停留: 3.5小時", icon: "&#128031;", map: "https://goo.gl/maps/c6gq1c3M1Q3yKxXN8" },
+                    { time: "13:30", action: "午餐：美麗海水族館內", desc: "為求動線順暢，直接在館內用餐。推薦 4 樓的『Inoh 海上景觀餐廳』享用自助餐，或是在黑潮之海旁的咖啡廳吃輕食。", icon: "&#127836;", map: null },
+                    { time: "15:00", action: "古宇利島 & 海洋塔", desc: "離開水族館，開車跨越壯觀的古宇利大橋。可參觀海洋塔看海景，或讓小孩在沙灘踏浪。", icon: "&#127754;", map: "https://goo.gl/maps/example_kouri_tower" },
+                    { time: "17:00", action: "提早享用晚餐：古宇利蝦蝦飯", desc: "【特色美食】免去南下美國村的拉車疲勞，改在古宇利島享用超人氣蝦蝦飯 (Kouri Shrimp) 搭配無敵海景！(註：店家營業時間通常至18:00，建議早點去吃以免向隅)", icon: "&#127844;", map: "https://goo.gl/maps/example_kouri_shrimp" },
+                    { time: "18:30", action: "返回民宿", desc: "吃飽後開車輕鬆返回名護市的民宿休息，結束充實不疲憊的北部一日遊。", icon: "&#128663;", map: null }
                 ]
             },
             {
                 day: 4,
                 date: "7/28 (二)",
-                title: "文青散策與頂級和牛饗宴",
-                highlight: "港川外人住宅區、PARCO CITY、敘敘院",
+                title: "頂級和牛午宴與悠閒購物",
+                highlight: "敘敘院、PARCO CITY",
                 details: [
-                    { time: "10:00", action: "民宿 Check-out (The Ritz Okinawa Kise)", desc: "整理行李，將民宿恢復原狀，準備往南移動。", icon: "&#129619;", map: null },
-                    { time: "11:00", action: "港川外人住宅區", desc: "昔日美軍眷村改建，現在充滿可愛的甜點店與咖啡館。推薦購買 oHacorte 水果塔。適合拍照。建議停留: 1.5小時", icon: "&#127960;&#65039;", map: "https://goo.gl/maps/example_minatogawa" },
-                    { time: "12:30", action: "午餐：港川周邊", desc: "推薦在地知名的沖繩麵店：雞湯拉麵屋或沖繩麵。", icon: "&#127836;", map: null },
-                    { time: "14:00", action: "SAN-A 浦添西海岸 PARCO CITY", desc: "沖繩最大級購物中心！室內有冷氣，非常適合下午避暑，小孩有遊戲區，大人可盡情血拚。", icon: "&#128188;", map: "https://goo.gl/maps/example_parco_city" },
-                    { time: "18:00", action: "晚餐：敘敘院 (PARCO CITY店)", desc: "【必吃】提前預訂窗邊座位可看海景。頂級燒肉饗宴，享受入口即化的和牛。(高預算餐點)", icon: "&#129385;", map: "https://goo.gl/maps/example_jojoen_parco" },
-                    { time: "20:30", action: "飯店 Check-in (THE NEST NAHA)", desc: "開車前往那霸市區飯店 (THE NEST NAHA) 入住。", icon: "&#127976;", map: null }
+                    { time: "10:00", action: "民宿 Check-out", desc: "整理行李，將 The Ritz Okinawa Kise 恢復原狀，準備往南移動。", icon: "&#129619;", map: null },
+                    { time: "11:15", action: "抵達 PARCO CITY", desc: "開車抵達沖繩最大級購物中心！室內有冷氣，適合避暑，小孩有遊戲區，大人可盡情血拚。", icon: "&#128188;", map: "https://goo.gl/maps/example_parco_city" },
+                    { time: "12:00", action: "午餐：敘敘院 (PARCO CITY店)", desc: "【必吃推薦】改為中午享用頂級燒肉！提前預訂窗邊座位可欣賞白天絕美無敵海景，享受入口即化的和牛。", icon: "&#129385;", map: "https://goo.gl/maps/example_jojoen_parco" },
+                    { time: "14:00", action: "PARCO CITY 購物時光", desc: "吃飽後繼續在商場內逛街採買，有阿卡將、西松屋、橡子共和國等豐富的親子品牌。", icon: "&#128722;", map: null },
+                    { time: "18:00", action: "晚餐：自由安排", desc: "中午吃了大餐，晚餐可彈性選擇 PARCO CITY 內的美食街，或是前往那霸市區吃點輕食。", icon: "&#127836;", map: null },
+                    { time: "19:30", action: "飯店 Check-in (THE NEST NAHA)", desc: "開車前往那霸市區飯店入住，結束悠閒的一天。", icon: "&#127976;", map: null }
                 ]
             },
             {
                 day: 5,
                 date: "7/29 (三)",
-                title: "新型水族館與看飛機吃甜點",
-                highlight: "DMM水族館、瀨長島",
+                title: "新型水族館、奧武山與海景甜點",
+                highlight: "DMM水族館、奧武山沖宮、瀨長島",
                 details: [
-                    { time: "09:30", action: "前往豐見城市", desc: "從那霸市區開車約 30 分鐘。", icon: "&#128663;", map: null },
-                    { time: "10:00", action: "DMM Kariyushi 水族館", desc: "位於百貨內的新型態水族館，結合影像技術，有許多近距離觸摸體驗，非常吸引小小孩。建議停留: 2小時", icon: "&#128034;", map: "https://goo.gl/maps/example_dmm" },
-                    { time: "12:30", action: "午餐：iias 沖繩豐崎", desc: "水族館所在的商場內有美食街，方便快速解決午餐。", icon: "&#127869;&#65039;", map: null },
-                    { time: "14:30", action: "瀨長島 Umikaji Terrace", desc: "純白建築的希臘風海岸商場。距離機場近，是看飛機起降的最佳地點。", icon: "&#9992;&#65039;", map: "https://goo.gl/maps/example_senagajima" },
-                    { time: "15:30", action: "下午茶：幸福鬆餅", desc: "位於瀨長島內，超人氣舒芙蕾鬆餅，口感綿密，小孩超愛！(建議先抽號碼牌)", icon: "&#129374;", map: null },
-                    { time: "18:30", action: "晚餐：那霸市區", desc: "返回市區，可於國際通屋台村周邊感受熱鬧氣氛並用餐。", icon: "&#127835;", map: null }
+                    { time: "09:30", action: "出發前往豐見城市", desc: "早上悠閒起床後，從那霸市區飯店開車約 30 分鐘前往南部。", icon: "&#128663;", map: null },
+                    { time: "10:00", action: "DMM Kariyushi 水族館", desc: "結合影像技術的新型態水族館，有許多近距離觸摸體驗，非常吸引小小孩。建議停留: 2小時", icon: "&#128034;", map: "https://goo.gl/maps/example_dmm" },
+                    { time: "12:30", action: "午餐：iiAS 沖繩豐崎", desc: "水族館所在的商場內有美食街，方便快速解決午餐，讓孩子稍作休息。", icon: "&#127869;&#65039;", map: null },
+                    { time: "14:30", action: "奧武山 沖宮 & 奧武山公園", desc: "往那霸市區方向回程。大人可參拜沖繩八社之一的『沖宮』求平安，小孩可在旁邊的奧武山公園溜滑梯放電。", icon: "&#9961;&#65039;", map: "https://www.google.com/maps/search/?api=1&query=奧武山+沖宮" },
+                    { time: "16:30", action: "瀨長島 Umikaji Terrace", desc: "前往純白建築的希臘風海岸商場，傍晚時分較不炎熱，是看飛機起降與美麗夕陽的最佳地點。", icon: "&#9992;&#65039;", map: "https://goo.gl/maps/example_senagajima" },
+                    { time: "17:00", action: "下午茶：幸福鬆餅", desc: "位於瀨長島內，超人氣舒芙蕾鬆餅，口感綿密，小孩超愛！(建議抵達時先抽號碼牌)", icon: "&#129374;", map: null },
+                    { time: "19:00", action: "晚餐：那霸市區", desc: "返回市區，可於國際通或飯店周邊感受熱鬧氣氛並用餐。", icon: "&#127835;", map: null }
                 ]
             },
             {
                 day: 6,
                 date: "7/30 (四)",
-                title: "那霸市區文化與採買",
-                highlight: "國際通、牧志市場、一心壽喜燒",
+                title: "動物王國探索與那霸市區採買",
+                highlight: "沖繩兒童王國、國際通、一心壽喜燒",
                 details: [
-                    { time: "10:00", action: "沖繩世界文化王國 (玉泉洞)", desc: "(彈性行程) 開車約 40 分。可觀看鐘乳石洞與傳統太鼓秀。若不想跑遠，可改去首里城公園外圍走走。", icon: "&#127878;", map: "https://goo.gl/maps/example_okinawa_world" },
-                    { time: "13:00", action: "午餐：牧志公設市場周邊", desc: "感受在地市場活力，一樓買海鮮可上二樓代客料理，或是吃有名的豬肉蛋飯糰。", icon: "&#127843;", map: "https://goo.gl/maps/example_makishi" },
-                    { time: "14:30", action: "國際通 (Kokusai Dori)", desc: "採買伴手禮 (紅芋塔、雪鹽、紀念品) 的最佳時機。唐吉訶德也在這裡。", icon: "&#128189;", map: "https://goo.gl/maps/example_kokusai" },
-                    { time: "18:00", action: "晚餐：沖繩一心壽喜燒", desc: "【必吃推薦】國際通周邊的復古老店！一次享受頂級和牛與阿古豬壽喜燒，老闆會親自提供桌邊服務。座位少務必提前訂位！", icon: "&#127858;", map: "https://www.google.com/maps/search/?api=1&query=一心壽喜燒+那霸" },
-                    { time: "20:00", action: "返回飯店整理行李", desc: "吃飽喝足後，散步或開車返回 THE NEST NAHA 準備隔天退房。", icon: "&#128092;", map: null }
+                    { time: "09:30", action: "出發前往沖繩市", desc: "從那霸市區開車約 40 分鐘。", icon: "&#128663;", map: null },
+                    { time: "10:15", action: "沖繩兒童王國 (沖縄こどもの国)", desc: "非常推薦裡面的室內『Wonder Museum 奇蹟博物館』，有冷氣且充滿適合小小孩的互動科學設施！戶外則有動物園。建議停留: 2.5小時", icon: "&#129409;", map: "https://goo.gl/maps/search/?api=1&query=沖縄こどもの国" },
+                    { time: "13:30", action: "輕食點心：國際通周邊", desc: "因為傍晚要吃大餐，中午返回那霸後建議簡單吃，推薦有名的『豬肉蛋飯糰本店』墊墊胃。", icon: "&#127848;", map: "https://www.google.com/maps/search/?api=1&query=豬肉蛋飯糰+那霸" },
+                    { time: "14:15", action: "國際通 (Kokusai Dori) 逛街", desc: "採買伴手禮 (紅芋塔、雪鹽、紀念品) 的最佳時機。唐吉訶德也在這裡。", icon: "&#128189;", map: "https://goo.gl/maps/example_kokusai" },
+                    { time: "16:00", action: "提早享用晚餐：沖繩一心壽喜燒", desc: "【必吃推薦】配合您的需求提早於下午4點用餐！享受頂級和牛與阿古豬壽喜燒，完美避開用餐尖峰時段。", icon: "&#127858;", map: "https://www.google.com/maps/search/?api=1&query=一心壽喜燒+那霸" },
+                    { time: "18:00", action: "返回飯店整理行李", desc: "吃飽喝足後，可繼續在市區散步，或開車返回 THE NEST NAHA 準備隔天退房。", icon: "&#128092;", map: null }
                 ]
             },
             {
                 day: 7,
                 date: "7/31 (五)",
-                title: "滿載而歸",
-                highlight: "歸還車輛、搭機",
+                title: "悠閒早晨、最後血拚與滿載而歸",
+                highlight: "Ashibinaa Outlet、歸還車輛、搭機",
                 details: [
-                    { time: "07:00", action: "飯店 Check-out", desc: "準備好所有行李，確認沒有遺漏。離開 THE NEST NAHA。", icon: "&#129619;", map: null },
-                    { time: "07:30", action: "OTS 還車 (臨空豐崎或機場旁)", desc: "請務必預留加滿油及還車檢查的時間 (至少抓 40 分鐘)。搭乘接駁車前往機場。", icon: "&#128663;", map: null },
-                    { time: "08:30", action: "抵達那霸機場 (OKA)", desc: "辦理 IT289 報到手續與托運行李。逛逛國內線航廈的伴手禮店(選擇比國際線多)。", icon: "&#9992;&#65039;", map: null },
-                    { time: "10:55", action: "搭機返台", desc: "帶著滿滿的夏日回憶，平安回家！", icon: "&#127968;", map: null }
+                    { time: "09:30", action: "飯店 Check-out", desc: "因為班機在下午，早上可以悠閒地整理行李，確認沒有遺漏後離開 THE NEST NAHA，驅車前往豐見城市。", icon: "&#129619;", map: null },
+                    { time: "10:00", action: "Ashibinaa Outlet 購物中心", desc: "【加碼行程】就在還車點正對面！把握最後機會血拚各大品牌，這裡也有餐廳可以提早享用早午餐。", icon: "&#128189;", map: "https://www.google.com/maps/search/?api=1&query=Ashibinaa+Outlet" },
+                    { time: "11:30", action: "OTS 還車 (臨空豐崎)", desc: "抵達租車公司，預留加滿油及還車檢查的時間。還車後搭乘免費接駁車前往機場。", icon: "&#128663;", map: null },
+                    { time: "12:00", action: "抵達那霸機場 (OKA)", desc: "辦理報到手續與托運行李。剩餘時間可以逛逛國內線航廈買飯糰或名產。", icon: "&#9992;&#65039;", map: null },
+                    { time: "14:00", action: "搭機返台", desc: "帶著滿滿的夏日回憶，平安回家！", icon: "&#127968;", map: null }
                 ]
             }
         ];
@@ -508,14 +456,13 @@
         // --- 2. Data Source: Food ---
         const foodData = [
             { name: "敘敘院 燒肉", category: "meat", desc: "位於 PARCO CITY，無敵海景配頂級和牛，您指定的必吃美食！", location: "浦添市", emoji: "&#129385;" },
-            { name: "沖繩一心壽喜燒", category: "meat", desc: "國際通周邊老字號！和牛與阿古豬壽喜燒雙重享受，老闆會親自桌邊服務示範。", location: "那霸市", emoji: "&#127858;" },
-            { name: "琉球の牛 (阿古豬)", category: "meat", desc: "恩納村超人氣阿古豬與和牛專賣店，肉質鮮甜，適合長輩與小孩。", location: "恩納村", emoji: "&#128055;" },
-            { name: "系滿魚市場", category: "seafood", desc: "高CP值海鮮！生魚片、烤扇貝、海膽，環境乾淨方便。", location: "系滿市", emoji: "&#127843;" },
-            { name: "百年古家 大家", category: "meat", desc: "在百年古民家享用阿古豬沖繩麵，氣氛極佳。", location: "名護市", emoji: "&#127836;" },
+            { name: "沖繩一心壽喜燒", category: "meat", desc: "國際通周邊老字號！和牛與阿古豬壽喜燒雙重享受，老闆親自桌邊服務。", location: "那霸市", emoji: "&#127858;" },
+            { name: "百年古家 大家", category: "meat", desc: "在百年古民家享用超美味阿古豬涮涮鍋，氣氛極佳，需預約。", location: "名護市", emoji: "&#128055;" },
+            { name: "名護夏祭 屋台小吃", category: "meat", desc: "Day 1 限定！祭典路邊攤的炒麵、章魚燒與各式日本在地小吃。", location: "名護漁港", emoji: "&#127840;" },
+            { name: "牧志公設市場 海鮮", category: "seafood", desc: "那霸的廚房，一樓挑海鮮，二樓馬上料理品嚐！", location: "那霸市", emoji: "&#128031;" },
             { name: "oHacorte 水果塔", category: "cafe", desc: "港川外人住宅區內的文青甜點，新鮮水果塔超美味。", location: "浦添市", emoji: "&#127827;" },
             { name: "幸福鬆餅 (幸せのパンケーキ)", category: "cafe", desc: "瀨長島必吃排隊名店，軟綿綿的舒芙蕾口感。", location: "豐見城市", emoji: "&#129374;" },
-            { name: "牧志公設市場 海鮮", category: "seafood", desc: "那霸的廚房，一樓挑海鮮，二樓馬上料理品嚐！", location: "那霸市", emoji: "&#128031;" },
-            { name: "豬肉蛋飯糰本店", category: "meat", desc: "國際通/牧志市場周邊，早餐或小點心的最佳選擇。", location: "那霸市", emoji: "&#127848;" }
+            { name: "豬肉蛋飯糰本店", category: "meat", desc: "國際通周邊，早餐或中餐的最佳選擇。", location: "那霸市", emoji: "&#127848;" }
         ];
 
         // --- 3. Rendering Logic ---
@@ -544,7 +491,6 @@
                     <span class="text-gray-400 transform transition-transform duration-300 icon-chevron">&#9660;</span>
                 `;
 
-                // ** 這裡套用了之前修復時間軸疊字的 CSS **
                 const content = document.createElement('div');
                 content.className = "px-6 py-4 hidden itinerary-content";
                 
@@ -703,3 +649,7 @@
     </script>
 </body>
 </html>
+
+
+
+```
